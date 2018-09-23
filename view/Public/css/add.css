@@ -1,0 +1,16 @@
+/* .detail-3 .item-product {
+    display: inline-block;
+    border: 1px solid red;
+} */
+
+.user .nav-link {
+    padding: .2rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.user .nav-link i {
+    padding: 0
+}

@@ -1,0 +1,62 @@
+/* table td {
+    display: flex;
+    align-items: center;
+}
+
+tr {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+td,
+th {
+    flex: 0 0 20%;
+} */
+
+table td input[type="checkbox"] {
+    margin-right: 1rem;
+}
+
+.text-dark {
+    color: #333;
+}
+
+
+/* #exampleFormControlInput1 {
+    max-width: 15rem;
+} */
+
+.nav-header a {
+    padding: .5rem 1rem
+}
+
+.nav-header {
+    padding: 1rem 0rem;
+    border-bottom: 1px solid #333;
+}
+
+.active-header {}
+
+form {
+    width: 100%;
+}
+
+.nav-menu .nav-item {
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    border-right: 1px solid #fff;
+}
+
+.nav-menu .nav-item:last-child {
+    border: none;
+}
+
+.product th,
+.product tr {
+    display: inline-block;
+}
+
+.product td {
+    flex: 0 0 auto;
+}
