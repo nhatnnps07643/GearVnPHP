@@ -29,6 +29,7 @@
 		require 'model/connect.php';
 		require 'model/category.php';
 		require 'model/product.php';
+		require 'model/brand.php';
 		//Gọi đến các controller để xử lí
 		$MESSAGE='';
 		switch ($path) {
@@ -40,7 +41,7 @@
 				require 'controller/admin/managerProd.php';
 				break;
 
-			case 'brand':
+			case 'brands':
 				require 'controller/admin/brand.php';
 				break;
 			

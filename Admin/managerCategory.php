@@ -8,7 +8,7 @@ $url = "admin.php?path=category";
 		<div class="row">
 			<div class="col-md-4">
 				<h2 class="bg-info btn text-white p-2 h1 ">Thêm Danh Mục</h2>
-				<form action="admin.php" method="POST" enctype="multipart/form-data">
+				<form action="<?=$url?>" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="exampleFormControlInput1">TÊN DANH MỤC</label>
 						<input type="text" name="name" class="name-cata form-control" id="exampleFormControlInput1" placeholder="Tên danh mục">

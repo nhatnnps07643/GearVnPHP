@@ -61,7 +61,7 @@ $url_product = "admin.php?path=product";
 							<label for="brand">THƯƠNG HIỆU</label>
 							<select name='brand' id='brand'>
 								<?php 
-									$listCate = Category::getList();
+									$listCate = Brands::getList();
 									while($set = $listCate->fetch()){
 										echo "<option value='".$set['id']."'>".$set['name']."</option>";
 									}

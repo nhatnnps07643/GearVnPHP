@@ -71,7 +71,6 @@ class product {
        $db = new connect();
 	   $query = "insert into product values(NULL,'$this->name','$this->image',$this->price,$this->sale,'$this->date_created',";
 	   $query .= "'$this->decs',$this->special,$this->view,$this->stock, $this->guarantee,$this->id_category,$this->brand)";
-	   echo  $query;
 	   $db->execute($query);
    }
    function update(){
