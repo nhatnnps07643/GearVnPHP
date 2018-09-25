@@ -26,7 +26,7 @@ $url_product = "admin.php?path=product";
 						</div>
 						<div class="form-group">
 							<label for="image">HÌNH ẢNH</label><br>
-							<input id="image" name="image" type="file1">
+							<input id="image" name="image" type="file">
 						</div>
 						<div class="form-group">
 							<input id="special" name="special-cb" type="checkbox">

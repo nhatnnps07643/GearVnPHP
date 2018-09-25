@@ -18,8 +18,8 @@ switch ($action) {
 		if(isset($_POST['action'])){
 			$name = $_POST['name'];
 			$image = $_FILES['image'];
-			echo $image['tmp_name'];
-			if($image != null)
+			$url = "";
+			if($image['name'] != null)
 				$url = './view/Public/img/category/'.$image['name'];
 			//Kiểm tra xem tên danh mục có tồn tại hay không 
 			$checkIsset = getByName($table,$name);
@@ -64,7 +64,7 @@ switch ($action) {
 			$id = $_POST['hiddenID'];
 			$name = $_POST['name'];
 			$url= '';
-			if(isset($_FILES['image'])){
+			if($_FILES['image']['name'] != null){
 				$image = $_FILES['image'];
 				$url = './view/Public/img/category/'.$image['name'];
 				move_uploaded_file ( $image['tmp_name'] , $url );

@@ -1,6 +1,6 @@
 
 <?php
-	$url = './Admin/Category.php';
+	$url_requrire = './Admin/category.php';
 	$table = 'category';
 	if(isset($_GET['action']))
 		$action=$_GET['action'];
@@ -65,20 +65,20 @@
 				$name = $_POST['name'];
 				isset($_POST['cb']) ? $cb = 1 : $cb = 0;
 				$url= '';
-				if(isset($_FILES['image'])){
+				if($_FILES['image']['name'] != null){
 					$image = $_FILES['image'];
 					$url = './view/Public/img/category/'.$image['name'];
 					move_uploaded_file ( $image['tmp_name'] , $url );
 				}else{
 					$url = $_POST['hiddenIMG'];
+					echo $url;
 				}
 				$cate_update = new Category($id, $name , $cb, $url);
 				$cate_update->update();
 			}
 			$_POST = array();
-
 			break;
 	}
-	require $url;
+	require $url_requrire;
 	//KẾT THÚC XỬ LÍ DANH MỤC
 ?>

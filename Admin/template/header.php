@@ -53,7 +53,7 @@
 			<li class="nav-item btn active-header"><a class="text-white h5" href="?path=category">Quản lí danh mục</a></li>
 			<li class="nav-item btn"><a class="text-white" href="?path=product">Quản lí sản phẩm</a></li>
 			<li class="nav-item btn"><a class="text-white" href="?path=brands">Quản lí thương hiệu</a></li>
-			<li class="nav-item btn"><a class="text-white" href="?path='user">Quản lí người dùng</a></li>
+			<li class="nav-item btn"><a class="text-white" href="?path=guest">Quản lí người dùng</a></li>
 			<li class="nav-item btn"><a class="text-white" href="?path='image">Quản lí hình ảnh</a></li>
 			<li class="nav-item btn"><a class="text-white" href="?path='bill">Quản lí hóa đơn</a></li>
 			<li class="nav-item btn"><a class="text-white" href="?path='bill">Quản lí bình luận</a></li>
