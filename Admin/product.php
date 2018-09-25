@@ -1,5 +1,5 @@
 <?php 
-include "admin/header.php";
+include "admin/template/header.php";
 //Đường dẫn tới controller điều khiển
 $url_product = "admin.php?path=product";
 ?>
@@ -26,7 +26,7 @@ $url_product = "admin.php?path=product";
 						</div>
 						<div class="form-group">
 							<label for="image">HÌNH ẢNH</label><br>
-							<input id="image" name="image" type="file">
+							<input id="image" name="image" type="file1">
 						</div>
 						<div class="form-group">
 							<input id="special" name="special-cb" type="checkbox">
@@ -37,7 +37,7 @@ $url_product = "admin.php?path=product";
 							<label for="category">DANH MỤC</label>
 							<select name='category' id='category'>
 								<?php 
-									$listCate = Category::getList();
+									$listCate = getList('category');
 									while($set = $listCate->fetch()){
 										echo "<option value='".$set['id']."'>".$set['name']."</option>";
 									}
@@ -61,7 +61,7 @@ $url_product = "admin.php?path=product";
 							<label for="brand">THƯƠNG HIỆU</label>
 							<select name='brand' id='brand'>
 								<?php 
-									$listCate = Brands::getList();
+									$listCate = getList('brands');
 									while($set = $listCate->fetch()){
 										echo "<option value='".$set['id']."'>".$set['name']."</option>";
 									}
@@ -94,7 +94,12 @@ $url_product = "admin.php?path=product";
 					<div class="menu-big mb-3 d-flex">
 						<div class="btn bg-warning select-all" >Chọn tất cả</div>
 						<div class="btn bg-info no-select-all ml-3 " >Bỏ chọn</div>
-						<button class="btn btn-primary ml-3" type="submit" name="action" value="delete-multi-pro">Xóa các mục đã chọn</button>
+						<button class="btn btn-primary ml-3 mr-auto" type="submit" name="action" value="delete-multi-pro">Xóa các mục đã chọn</button>
+						<div class="form-inline my-2 my-lg-0">
+							<input class="form-control mr-sm-2" name= "name_search" type="search" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success my-2 my-sm-0" value="search" type="submit">Search</button>
+   					 	</div>
+					</div>
 					</div>
 					<table class="table table-bordered">
 						<thead class="thead-dark">
@@ -111,8 +116,12 @@ $url_product = "admin.php?path=product";
 						</tr>
 						</thead>
 						<tbody>
-						<?php 
-							$result = Product::getList();// goi phuong thuc lay danh sach
+						<?php
+							if(isset($_POST['name_search']))
+							// Nếu có tồn tại cái search
+								$result = searchByName($table,$_POST['name_search']);
+							else
+								$result = getList($table);// goi phuong thuc lay danh sach
 							while($set = $result->fetch()){ // duyet danh sach
 								echo "<tr  class=''>";
 								echo "<td> <input type='checkbox' class='chb-cata' name='check[]' value=".$set['id'].">".$set['id']."</td>";
@@ -134,5 +143,5 @@ $url_product = "admin.php?path=product";
 		</div>
 	</div>
 <?php 
-include "admin/footer.php";
+include "admin/template/footer.php";
 ?>

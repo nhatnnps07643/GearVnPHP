@@ -41,12 +41,6 @@ class product {
 		$this->id_category = $id_category;
 		$this->brand = $brand;
     }
-    function getList(){
-        $db = new connect();
-        $query = "select * from product";
-        $result = $db->getList($query);
-        return $result;
-    }
     // Lấy phần tử sản phẩm từ from tới to
     function getListPage($from,$to){
         $db = new connect();
@@ -55,46 +49,18 @@ class product {
         return $result;
 	}
 	// Lấy sản phẩm bằng Id
-    function getProductById($id) {
+    function insert(){
         $db = new connect();
-        $query = "select * from product where id = $id";
-        $result =  $db->getInstance($query);
-        return $result;
+        $query = "insert into product values(NULL,'$this->name','$this->image',$this->price,$this->sale,'$this->date_created',";
+        $query .= "'$this->decs',$this->special,$this->view,$this->stock, $this->guarantee,$this->id_category,$this->brand)";
+        $db->execute($query);
     }
-    function getProductByName($name) {
+    function update(){
         $db = new connect();
-		$query = "select * from product where name = '$name'";
-        $result =  $db->getInstance($query);
-        return $result;
+        $query = "update product set name = '$this->name', image = '$this->image',";
+        $query .= "price =  $this->price, sale = $this->sale,description ='$this->decs', special = $this->special,";
+        $query .= " stock = $this->stock, guarantee = $this->guarantee,id_category = $this->id_category,";
+        $query .= "id_brand = $this->brand where id =$this->id";
+        $db->execute($query);
     }
-   function insert(){
-       $db = new connect();
-	   $query = "insert into product values(NULL,'$this->name','$this->image',$this->price,$this->sale,'$this->date_created',";
-	   $query .= "'$this->decs',$this->special,$this->view,$this->stock, $this->guarantee,$this->id_category,$this->brand)";
-	   $db->execute($query);
-   }
-   function update(){
-	   $db = new connect();
-	   $query = "update product set name = '$this->name', image = '$this->image',";
-	   $query .= "price =  $this->price, sale = $this->sale,description ='$this->decs', special = $this->special,";
-	   $query .= " stock = $this->stock, guarantee = $this->guarantee,id_category = $this->id_category,";
-	   $query .= "id_brand = $this->brand where id =$this->id";
-       $db->execute($query);
-   }
-   function delete(){
-       $db = new connect();
-       $query = "delete from product where id = ".$this->proid;
-       $db->execute($query);
-   }
-   function deleteById($id){
-       $db = new connect();
-       $query = "delete from product where id = ".$id;
-       $db->execute($query);
-   }
-   function deleteMulti($list){
-       $db = new connect();
-       $query = "delete from product where id IN (".implode(",",$list).")";
-       $db->execute($query);
-   }
-   
 }

@@ -30,7 +30,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#CCMenuHeader" aria-controls="CCMenuHeader" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
             <div class="collapse navbar-collapse" id="CCMenuHeader">
                 
-                <!-- <div class="user dropdown" style=" display: <?php if(isset($_SESSION['user'])) echo "flex"; else echo "none" ?> ">
+                <div class="user dropdown" style=" display: <?php if(isset($_SESSION['user'])) echo "flex"; else echo "none" ?> ">
                     <a class="nav-link" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                         <div class="box-img"><img src="./view/Public/img/avatar.jpg" alt=""></div>
                     </a>
@@ -46,7 +46,7 @@
 							<div class="element-temp"></div></a></a>
 						</li>
 					</ul>
-				</div> -->
+				</div>
 			</div>
 		</nav>
 		<ul class="p-0 d-flex nav-menu justify-content-around bg-dark">

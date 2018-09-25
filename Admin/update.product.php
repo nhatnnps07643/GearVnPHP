@@ -1,5 +1,5 @@
 <?php 
-	require 'Admin/header.php';
+	require 'Admin/template/header.php';
 ?>
 <div class="container">
 	<div class="row">
@@ -28,7 +28,7 @@
 							</div>
 							<div class="form-group">
 								<label for="image">HÌNH ẢNH</label><br>
-								<input id="image" name="image" type="file">
+								<input id="image" name="image" type="file1">
 								<img class="img-fluid" src='<?=$result['image']?>' alt="Hình đã bị xóa">
 							</div>
 							<div class="form-group">
@@ -40,7 +40,7 @@
 								<label for="category">DANH MỤC</label>
 								<select name='category' id='category'>
 									<?php 
-										$listCate = Category::getList();
+										$listCate = getList($table);
 										while($set = $listCate->fetch()){
 											echo "<option value='".$set['id']."'>".$set['name']."</option>";
 										}
@@ -64,7 +64,7 @@
 								<label for="brand">THƯƠNG HIỆU</label>
 								<select name='brand' id='brand'>
 									<?php 
-										$listCate = Category::getList();
+										$listCate = getList($table);
 										while($set = $listCate->fetch()){
 											echo "<option value='".$set['id']."'>".$set['name']."</option>";
 										}

@@ -1,5 +1,5 @@
 <?php 
-include "admin/header.php";
+include "admin/template/header.php";
 $url = "admin.php?path=brands";
 
 ?>
@@ -15,7 +15,8 @@ $url = "admin.php?path=brands";
 					</div>
 					<div class="form-group mt-3">
 						<label for="exampleFormControlFile1">FILE INPUT</label>
-						<input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+						<input type="file" class="form-control-file" name="image" id="file1">
+						<img src="" id="imageShow" alt="">
 					</div>
 					<div class="form-group">
 						<button type="submit" name='action' id="add" value="add">Thêm</button>
@@ -44,7 +45,7 @@ $url = "admin.php?path=brands";
 					</div>
 					<div class="form-group mt-3">
 						<label for="file">FILE INPUT</label>
-						<input type="file" class="form-control-file" name="image" id="file">
+						<input type="file" class="form-control-file" name="image" id="file2">
 						<img src="<?php if(isset($result)) echo $result['image'] ?>" class="img-fluid" alt="">
 					</div>
 					<div class="form-group">
@@ -84,10 +85,9 @@ $url = "admin.php?path=brands";
 						<?php
 							if(isset($_POST['name_search']))
 								// Nếu có tồn tại cái search
-								$result = Brands::searchByName($_POST['name_search']);
-
+								$result = searchByName($table,$_POST['name_search']);
 							else
-								$result = Brands::getList();
+								$result = getList($table);
 							while($set = $result->fetch()){ 
 								echo "<tr>";
 								echo "<td> <input type='checkbox' class='chb-cata' name='check[]' value=".$set['id'].">".$set['id']."</td>";
@@ -105,5 +105,5 @@ $url = "admin.php?path=brands";
 		</div>
 	</div>
 <?php 
-include "admin/footer.php";
+include "admin/template/footer.php";
 ?>

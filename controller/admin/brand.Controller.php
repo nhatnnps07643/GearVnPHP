@@ -1,6 +1,7 @@
 
 <?php
-$url_requrire =  "Admin/Mn_brands.php";
+$url_requrire =  "Admin/brands.php";
+$table = 'brands';
 if(isset($_GET['action']))
 	$action=$_GET['action'];
 elseif (isset ($_POST['action'])) 
@@ -17,42 +18,42 @@ switch ($action) {
 		if(isset($_POST['action'])){
 			$name = $_POST['name'];
 			$image = $_FILES['image'];
+			echo $image['tmp_name'];
 			if($image != null)
 				$url = './view/Public/img/category/'.$image['name'];
 			//Kiểm tra xem tên danh mục có tồn tại hay không 
-			$checkIsset = Brands::searchBrandsByName($name);
+			$checkIsset = getByName($table,$name);
 			if($checkIsset == null){
 				move_uploaded_file ( $image['tmp_name'] , $url );
 				$cate = new Brands(NULL,$name, $url );
 				$cate->insert();
+				
 			}else{
 				$MESSAGE = "Đã tồn tại danh mục này rồi";
 			}
 		}
-	
 		$_POST=array();
 		break;
 
 	case "delete":
 		if(isset($_GET['id'])){
 			$id = $_GET['id'];
-			Brands::deleteById($id);
+			deleteById($table,$id);
 		}
 		break;
 
 	case "delete-multi":
-	echo "vao";
-			if(isset($_POST['check'])){
-				$list_id = Array();
-				$list_id = $_POST['check'];
-				Brands::deleteMulti($list_id);
-			}
+		if(isset($_POST['check'])){
+			$list_id = Array();
+			$list_id = $_POST['check'];
+			deleteMulti($table,$list_id);
+		}
 		break;
 
 	case "update-form":
 		if(isset($_GET['id'])){
 			$id = $_GET['id'];
-			$result = Brands::getBrandsById($id);
+			$result = getById($table,$id);
 		}
 		break;
 	case "search":

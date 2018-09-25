@@ -30,19 +30,20 @@
 		require 'model/category.php';
 		require 'model/product.php';
 		require 'model/brand.php';
+		require 'model/core.php';
 		//Gọi đến các controller để xử lí
 		$MESSAGE='';
 		switch ($path) {
 			case 'category':
-				require 'controller/admin/managerCate.php';
+				require 'controller/admin/category.Controller.php';
 				break;
 
 			case 'product':
-				require 'controller/admin/managerProd.php';
+				require 'controller/admin/product.Controller.php';
 				break;
 
 			case 'brands':
-				require 'controller/admin/brand.php';
+				require 'controller/admin/brand.Controller.php';
 				break;
 			
 			default:

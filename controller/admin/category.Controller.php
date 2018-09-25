@@ -1,6 +1,7 @@
 
 <?php
-
+	$url = './Admin/Category.php';
+	$table = 'category';
 	if(isset($_GET['action']))
 		$action=$_GET['action'];
 	elseif (isset ($_POST['action'])) 
@@ -9,10 +10,9 @@
 		$action="home";
 
 	switch ($action) {
-		
 		case "home":
-			require "./Admin/managerCategory.php";
 			break;
+
 		// XỬ LÍ DANH MỤC
 		case "add-category":
 			if(isset($_POST['action'])){
@@ -24,7 +24,7 @@
 				if($image != null)
 					$url = './view/Public/img/category/'.$image['name'];
 				//Kiểm tra xem tên danh mục có tồn tại hay không 
-				$checkIsset = Category::searchCateByName($name);
+				$checkIsset = getByName($table,$name);
 				if($checkIsset == null){
 					move_uploaded_file ( $image['tmp_name'] , $url );
 					$cate = new Category('',$name, $cb, $url);
@@ -33,32 +33,29 @@
 					$MESSAGE = "Đã tồn tại danh mục này rồi";
 				}
 			}
-			require './admin/managerCategory.php';
 			$_POST=array();
 			break;
 
 		case "delete-cate":
 			if(isset($_GET['id'])){
 				$id = $_GET['id'];
-				Category::deleteById($id);
+				deleteById($table,$id);
 			}
-			require './admin/managerCategory.php';
 			break;
 
 		case "delete-multi-cate":
 				if(isset($_POST['check'])){
 					$list_id = Array();
 					$list_id = $_POST['check'];
-					Category::deleteMulti($list_id);
+					deleteMulti($table,$list_id);
 				}
-			require './admin/managerCategory.php';
 			break;
 
 		case "update-cate-form":
 			if(isset($_GET['id'])){
 				$id = $_GET['id'];
-				$result = Category::getCateById($id);
-				require './admin/managerCategory.php';
+				$result = getById($table,$id);
+	
 			}
 			break;
 
@@ -79,8 +76,9 @@
 				$cate_update->update();
 			}
 			$_POST = array();
-			require './admin/managerCategory.php';
+
 			break;
 	}
+	require $url;
 	//KẾT THÚC XỬ LÍ DANH MỤC
 ?>

@@ -1,5 +1,5 @@
 <?php 
-include "admin/header.php";
+include "admin/template/header.php";
 $url = "admin.php?path=category";
 
 ?>
@@ -15,7 +15,7 @@ $url = "admin.php?path=category";
 					</div>
 					<div class="form-group mt-3">
 						<label for="exampleFormControlFile1">File input</label>
-						<input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+						<input type="file" class="form-control-file" name="image" id="file1">
 					</div>
 					<div class="group-items">
 						<label for="show">Hiển thị lên trang chủ</label>
@@ -48,7 +48,7 @@ $url = "admin.php?path=category";
 					</div>
 					<div class="form-group mt-3">
 						<label for="exampleFormControlFile1">File input</label>
-						<input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+						<input type="file" class="form-control-file" name="image" id="file2">
 					</div>
 					<div class="group-items">
 						<label for="show">Hiển thị lên trang chủ</label>
@@ -72,8 +72,12 @@ $url = "admin.php?path=category";
 				<form action="" method="POST">
 					<div class="menu-big mb-3 d-flex">
 						<div class="btn bg-warning select-all" >Chọn tất cả</div>
-						<div class="btn bg-info no-select-all ml-3 mr-auto" >Bỏ chọn</div>
-						<button class="btn btn-primary" type="submit" name="action" value="delete-multi-cate">Xóa nhiều</button>
+						<div class="btn bg-info no-select-all ml-3 " >Bỏ chọn</div>
+						<button class="btn btn-primary ml-3 mr-auto" type="submit" name="action" value="delete-multi-cate">Xóa nhiều</button>
+						<div class="form-inline my-2 my-lg-0">
+							<input class="form-control mr-sm-2" name= "name_search" type="search" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success my-2 my-sm-0" value="search" type="submit">Search</button>
+   					 	</div>
 					</div>
 					<table class="table table-bordered">
 						<thead class="thead-dark">
@@ -86,8 +90,12 @@ $url = "admin.php?path=category";
 						</tr>
 						</thead>
 						<tbody>
-						<?php 
-							$result = Category::getList();// goi phuong thuc lay danh sach
+						<?php
+							if(isset($_POST['name_search']))
+							// Nếu có tồn tại cái search
+								$result = searchByName($table,$_POST['name_search']);
+							else
+								$result = getList($table);// goi phuong thuc lay danh sach
 							while($set = $result->fetch()){ // duyet danh sach
 								echo "<tr>";
 								echo "<td> <input type='checkbox' class='chb-cata' name='check[]' value=".$set['id'].">".$set['id']."</td>";
@@ -110,5 +118,5 @@ $url = "admin.php?path=category";
 		</div>
 	</div>
 <?php 
-include "admin/footer.php";
+include "admin/template/footer.php";
 ?>

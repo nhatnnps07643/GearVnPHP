@@ -2,8 +2,8 @@
 
 <?php 
 	//Gọi đến model
-	$url_requrire =  "Admin/managerProd.php";
-
+	$url_requrire =  "./Admin/product.php";
+	$table = "product";
 	if(isset($_GET['action']))
 		$action=$_GET['action'];
 	elseif (isset($_POST['action'])) 
@@ -32,34 +32,31 @@
 				$id_category = $_POST['category'];
 				$id_brand = $_POST['brand'];
 				//Kiểm tra sản phẩm có tồn tại hay chưa
-				if(Product::getProductByName($name) == null){
+				if(getByName($table,$name) == null){
 					$product = new Product(NULL, $name, $image, $price, $sale, $decs,$special,$stock,$guarantee,$id_category, $id_brand);
 					$product->insert();
+					if($image != '')
+						move_uploaded_file ( $_FILES['image']['tmp_name'] , $image );
 				}else {
 					$MESSAGE = "Sản phẩm đã tồn tại";
 				}
-				if($image != '')
-					move_uploaded_file ( $_FILES['image']['tmp_name'] , $image );
+				
 			}
-
 			break;
 		case "delete-multi-pro":
 			if(isset($_POST['check'])){
 				$list_id = Array();
 				$list_id = $_POST['check'];
-				Product::deleteMulti($list_id);
+				deleteMulti($table,$list_id);
 				break;
 		}
 		case "delete":
-			Product::deleteById($_GET['id']);
-			break;
-		case "delete":
 			if(isset($_GET['id']))
-				Product::deleteById($_GET['id']);
+				deleteById($table,$_GET['id']);
 			break;
 		case "form-update":
-			$result = Product::getProductById($_GET['id']);
-			$url_requrire = './Admin/form-product.php';
+			$result = getById($table,$_GET['id']);
+			$url_requrire = './Admin/update.product.php';
 			break;
 		case "update":
 			if(isset($_POST['hiddenID'])){

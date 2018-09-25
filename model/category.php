@@ -21,14 +21,6 @@ class Category {
 		$this->show = $show;
 		$this->img = $img;
 	}
-
-	//Lấy danh sách danh mục
-    function getList(){
-        $db = new connect();
-        $query = "select * from category";
-        $result = $db->getList($query);
-        return $result;
-    }
 	//Lấy danh sách được hiển thị
     function getListShow(){
         $db = new connect();
@@ -37,18 +29,6 @@ class Category {
         return $result;
     }
 	// Lấy sản phẩm bằng Id
-    function getCateById($id) {
-        $db = new connect();
-        $query = "select * from category where id = $id";
-        $result =  $db->getInstance($query);
-        return $result;
-	}
-    function searchCateByName($name) {
-        $db = new connect();
-		$query = "select * from category where name = '$name'";
-        $result =  $db->getInstance($query);
-        return $result;
-	}
     function countCateSelect() {
         $db = new connect();
 		$query = "select count(id) from category where category.show = 1";
@@ -70,17 +50,5 @@ class Category {
 		$query .= "' where id=".$this->id;
 		$db->execute($query);
 	}
-	// Xóa danh mục
-	function deleteById($id){
-		$db = new connect();
-		$query = "delete from category where id = ".$id;
-		$db->execute($query);
-	}
-	// Xóa nhiều danh mục
-	function deleteMulti($list){
-		$db = new connect();
-		$str = implode(',',$list);
-		$query = "delete from category where id IN (".$str.")";
-		$db->execute($query);
-	}
 }
+?>
