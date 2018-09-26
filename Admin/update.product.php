@@ -27,22 +27,24 @@
 								<input type="text" value='<?=$result['price']?>' name="price" class="name-cata form-control" id="" placeholder="Giá tiền">
 							</div>
 							<div class="form-group">
-								<label for="image">HÌNH ẢNH</label><br>
-								<input id="image" name="image" type="file">
+								<label for="img">HÌNH ẢNH</label><br>
+								<input name="image" id="img" type="file">
 								<img class="img-fluid" src='<?=$result['image']?>' alt="Hình đã bị xóa">
 							</div>
 							<div class="form-group">
 								<input id="special" name="special-cb" type="checkbox" <?php if($result['special'] == 1) echo "checked='checked"; ?>>
 								<label for="special"  class='ml-2'>SẢN PHẨM NỔI BẬT</label>
-								
 							</div>
 							<div class="form-group">
 								<label for="category">DANH MỤC</label>
 								<select name='category' id='category'>
 									<?php 
-										$listCate = getList($table);
+										$listCate = getList('category');
 										while($set = $listCate->fetch()){
-											echo "<option value='".$set['id']."'>".$set['name']."</option>";
+											if($result['id_category'] == $set['id'])
+												echo "<option selected value='".$set['id']."'>".$set['name']."</option>";
+											else
+												echo "<option value='".$set['id']."'>".$set['name']."</option>";
 										}
 									?>
 								</select>
@@ -64,9 +66,12 @@
 								<label for="brand">THƯƠNG HIỆU</label>
 								<select name='brand' id='brand'>
 									<?php 
-										$listCate = getList($table);
+										$listCate = getList('brands');
 										while($set = $listCate->fetch()){
-											echo "<option value='".$set['id']."'>".$set['name']."</option>";
+											if($result['id_category'] == $set['id'])
+												echo "<option selected value='".$set['id']."'>".$set['name']."</option>";
+											else 
+												echo "<option value='".$set['id']."'>".$set['name']."</option>";
 										}
 									?>
 								</select>

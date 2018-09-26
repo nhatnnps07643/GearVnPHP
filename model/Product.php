@@ -60,7 +60,7 @@ class product {
         $query = "update product set name = '$this->name', image = '$this->image',";
         $query .= "price =  $this->price, sale = $this->sale,description ='$this->decs', special = $this->special,";
         $query .= " stock = $this->stock, guarantee = $this->guarantee,id_category = $this->id_category,";
-        $query .= "id_brand = $this->brand where id =$this->id";
+		$query .= "id_brand = $this->brand where id =$this->id";
         $db->execute($query);
     }
 }

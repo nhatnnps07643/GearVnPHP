@@ -1,20 +1,46 @@
 <?php 
 include "admin/template/header.php";
 //Đường dẫn tới controller điều khiển
-$url_product = "admin.php?path=guest";
+$url_product = "admin.php?path=image";
 ?>
 	<div class="container mt-5">
-		<div class="row">
+		<!-- Phần form cho người dùng nhập -->
+		<form method="POST" action="<?=$url_product?>" enctype="multipart/form-data">
+			<div class="form-group row">
+				<label for="inputEmail3 " class="col-sm-2 col-md-4 col-form-label text-right">Tên sản phẩm</label>
+				<div class="col-sm-10 col-md-5">
+					<select name="name_product" class='custom-select' id="name_product">
+						<?php
+							$product = getList('product');
+							while($set = $product->fetch()){
+								echo "<option value='".$set['id']."'> ".$set['name']."</option>";
+							}
+						?>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputEmail3 " class="col-sm-2 col-md-4 col-form-label text-right">Chọn file</label>
+				<div class="col-sm-10 col-md-5">
+					<input type="file" class="form-control" name="Image" >
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+				<div class="col-md-3">
+					<button type="submit" class="btn btn-info" name="action" value="insert">Thêm vào</button>
+				</div>
+			</div>
+		</form>
+		<div class="row mt-5">
 			<div class="col-md-12">
 				<h2 class="text-center h2" >Danh sách Hình Ảnh</h2>
 				<form action="" method="POST">
 					<div class="menu-big mb-3 d-flex">
 						<div class="btn bg-warning select-all" >Chọn tất cả</div>
 						<div class="btn bg-info no-select-all ml-3 " >Bỏ chọn</div>
-						<button class="btn btn-primary ml-3" type="submit" name="action" value="delete-multi-pro">Xóa các mục đã chọn</button>
-						<button class="btn btn-primary ml-3 mr-auto" type="submit" name="action" value="resetpassword">Reset Password</button>
+						<button class="btn btn-primary ml-3 mr-auto" type="submit" name="action" value="delete-multi">Xóa các mục đã chọn</button>
 						<div class="form-inline my-2 my-lg-0">
-							<input class="form-control mr-sm-2" name= "name_search" type="search" placeholder="Search" aria-label="Search">
+							<input class="form-control mr-sm-2" name= "search" type="search" placeholder="Search" aria-label="Search">
 							<button class="btn btn-outline-success my-2 my-sm-0" value="search" type="submit">Search</button>
    					 	</div>
 					</div>
@@ -23,31 +49,35 @@ $url_product = "admin.php?path=guest";
 						<thead class="thead-dark">
 						<tr class="">
 							<th scope="col">ID</th>
-							<th scope="col">Tên</th>
-							<th scope="col">Email</th>
-							<th scope="col">Địa chỉ</th>
-							<th scope="col">SDT</th>
-							<th scope="col">Hình avatar</th>
+							<th scope="col">ID Sản phẩm</th>
+							<th scope="col">Tên sản phẩm</th>
+							<th scope="col">Đường dẩn</th>
+							<th scope="col">Hình</th>
 							<th scope="col">Thao tác</th>
-
 						</tr>
 						</thead>
 						<tbody>
 						<?php
-							if(isset($_POST['name_search']))
+							if(isset($_POST['search'])){
+								echo "vao";
+								$_POST = array();
+								$result = Image::ImgAndProduct();
+								// $result = getByName($result,$_POST['name_search']);
+							}
 							// Nếu có tồn tại cái search
-								$result = searchByName($table,$_POST['name_search']);
-							else
-								$result = getList($table);// goi phuong thuc lay danh sach
+								// $result = getByName($result,$_POST['name_search']);
+								
+							else 
+								$result = Image::ImgAndProduct();
 							while($set = $result->fetch()){ // duyet danh sach
-								echo "<tr  class=''>";
+								echo "<tr class=''>";
 								echo "<td> <input type='checkbox' class='chb-cata' name='check[]' value=".$set['id'].">".$set['id']."</td>";
-								echo "<td>".$set['name']."</td>";
-								echo "<td>".$set['email']."</td>";
-								echo "<td>".$set['address']."</td>";
-								echo "<td>".$set['number']."</td>";
-								echo "<td><img style='max-width: 30px' class='img-fluid' src=".$set['image']."></td>";
-								echo "<td> <a class='btn h3 bg-info text-white ml-3 ' href='$url_product&action=reset&id=".$set['id']."'>Reset Password</a>";
+								echo "<td>".$set['id_p']."</td>";
+								echo "<td>".$set["name"]."</td>";
+								echo "<td>".$set['link']."</td>";
+								echo "<td><img style='max-width: 30px' class='img-fluid' src=".$set['link']."></td>";
+								echo "<td> <a class='btn h3 bg-info text-white ml-3 ' href='$url_product&action=update&id=".$set['id']."'>Sửa</a>";
+								echo "<a class='btn h3 bg-info text-white ml-3 ' href='$url_product&action=delete&id=".$set['id']."'>Xóa</a> </td>";
 								echo "</tr>";
 							}
 							?>

@@ -2,10 +2,10 @@
 -- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 25, 2018 lúc 05:24 AM
--- Phiên bản máy phục vụ: 10.1.34-MariaDB
--- Phiên bản PHP: 7.2.7
+-- Host: 127.0.0.1
+-- Generation Time: Sep 26, 2018 at 12:26 PM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `gearvn`
+-- Database: `gearvn`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill`
+-- Table structure for table `bill`
 --
 
 CREATE TABLE `bill` (
@@ -57,7 +57,7 @@ CREATE TABLE `bill` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill_detail`
+-- Table structure for table `bill_detail`
 --
 
 CREATE TABLE `bill_detail` (
@@ -70,7 +70,7 @@ CREATE TABLE `bill_detail` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `brands`
+-- Table structure for table `brands`
 --
 
 CREATE TABLE `brands` (
@@ -80,22 +80,19 @@ CREATE TABLE `brands` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `brands`
+-- Dumping data for table `brands`
 --
 
 INSERT INTO `brands` (`id`, `name`, `image`) VALUES
-(10, 'MSI', './view/Public/img/category/MSI.png'),
-(13, 'AORUS', './view/Public/img/category/AORUS.png'),
-(14, 'DA', './view/Public/img/category/44_5553e79a1d1b4801b8a7ff6ddd71cc31.jpg'),
-(15, 'ádas', './view/Public/img/category/44_5553e79a1d1b4801b8a7ff6ddd71cc31.jpg'),
-(16, 'qưe', './view/Public/img/category/44_5553e79a1d1b4801b8a7ff6ddd71cc31.jpg'),
-(17, '123', './view/Public/img/category/44_5553e79a1d1b4801b8a7ff6ddd71cc31.jpg'),
-(18, '', './view/Public/img/category/44_5553e79a1d1b4801b8a7ff6ddd71cc31.jpg');
+(19, 'MSI', './view/Public/img/category/MSI.png'),
+(20, 'AORUS', './view/Public/img/category/AORUS.png'),
+(21, 'RAZOR', './view/Public/img/category/Razer_snake_logo.png'),
+(22, 'AMD', './view/Public/img/category/amd-logo-png-transparent.png');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -106,16 +103,21 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`name`, `id`, `show`, `img`) VALUES
-('CASE', 17, b'1', './view/Public/img/category/CASE.png');
+('CASE', 17, b'1', './view/Public/img/category/upload_026cad3de64d462bbb4071b6ef3d630a.jpg'),
+('MAIN', 18, b'1', './view/Public/img/category/MAIN.png'),
+('PSU', 19, b'1', './view/Public/img/category/PSU.png'),
+('RAM', 20, b'1', './view/Public/img/category/RAM.png'),
+('SSD', 21, b'1', './view/Public/img/category/SSD.png'),
+('CPU', 22, b'1', './view/Public/img/category/CPU.png');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -130,7 +132,7 @@ CREATE TABLE `comment` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `guest`
+-- Table structure for table `guest`
 --
 
 CREATE TABLE `guest` (
@@ -138,17 +140,24 @@ CREATE TABLE `guest` (
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `id_facebook` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id_facebook` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `number` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `active` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `guest`
+--
+
+INSERT INTO `guest` (`id`, `name`, `email`, `password`, `id_facebook`, `image`, `address`, `number`, `active`) VALUES
+(2, '123456789', 'nhatnnps07643@fpt.edu.vn', '123456789', NULL, 'view/public/view/logo.png', '109/15 Đường Hiệp Bình, Quận Thủ Đức', '0966643251', b'1');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `image`
+-- Table structure for table `image`
 --
 
 CREATE TABLE `image` (
@@ -157,10 +166,18 @@ CREATE TABLE `image` (
   `link` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `image`
+--
+
+INSERT INTO `image` (`id`, `id_product`, `link`) VALUES
+(51, 50, 'view/Public/imgupload_026cad3de64d462bbb4071b6ef3d630a.jpg'),
+(52, 52, 'view/Public/imgPSU.png');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -180,32 +197,34 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `image`, `price`, `sale`, `date_created`, `description`, `special`, `views`, `stock`, `guarantee`, `id_category`, `id_brand`) VALUES
-(40, 'AMD Ryzen 3 2200G 3.5 GHz tích hợp VGA Radeon Vega 8/6MB/4 nhân 4 luồng', './view/Public/img/product/PSU.png', '100000', '0', '2018-09-24', '213123123 21 312 31 321', b'1', 0, 107, 36, 17, 13),
-(41, 'HS70 Wireless Carbon', './view/Public/img/product/44_5553e79a1d1b4801b8a7ff6ddd71cc31.jpg', '10000', '12000', '2018-09-23', '', b'1', 0, 100, 36, 17, 13);
+(50, 'AMD Ryzen 3 1200 / 4 nhân 4 luồng / 3.1GHz / 8M / SK AM4$', './view/Public/img/product/upload_026cad3de64d462bbb4071b6ef3d630a.jpg', '100000', '0', '2018-09-26', 'Mô tả', b'1', 0, 100, 36, 22, 22),
+(52, 'AMD Ryzen 5 1600X / 6 nhân 12 luồng / 3.6GHz / 16M / SK AM4', './view/Public/img/product/upload_026cad3de64d462bbb4071b6ef3d630a.jpg', '120000', '0', '2018-09-26', 'Nô tả ', b'1', 0, 100, 36, 22, 22),
+(54, 'AMD Threadripper™ 1950X Socket TR4', './view/Public/img/product/upload_026cad3de64d462bbb4071b6ef3d630a.jpg', '10000', '0', '2018-09-26', 'Mô tả', b'1', 0, 100, 36, 22, 22),
+(66, 'Asorck A320M-HDV (socket AM4)', './view/Public/img/product/asrock_a320m-hdv__gearvn00.jpg', '10000', '0', '2018-09-26', 'Mô tả', b'1', 0, 100, 36, 17, 20);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `bill`
+-- Indexes for table `bill`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id`),
   ADD KEY `bill-guest` (`id_guest`);
 
 --
--- Chỉ mục cho bảng `bill_detail`
+-- Indexes for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD PRIMARY KEY (`id`),
@@ -213,19 +232,19 @@ ALTER TABLE `bill_detail`
   ADD KEY `detail-bill` (`id_bill`);
 
 --
--- Chỉ mục cho bảng `brands`
+-- Indexes for table `brands`
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`),
@@ -233,20 +252,20 @@ ALTER TABLE `comment`
   ADD UNIQUE KEY `id_guest` (`id_guest`);
 
 --
--- Chỉ mục cho bảng `guest`
+-- Indexes for table `guest`
 --
 ALTER TABLE `guest`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `image`
+-- Indexes for table `image`
 --
 ALTER TABLE `image`
   ADD PRIMARY KEY (`id`),
   ADD KEY `image-product` (`id_product`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
@@ -254,95 +273,95 @@ ALTER TABLE `product`
   ADD KEY `product_brands` (`id_brand`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `bill`
+-- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `bill_detail`
+-- AUTO_INCREMENT for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `brands`
+-- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT cho bảng `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `guest`
+-- AUTO_INCREMENT for table `guest`
 --
 ALTER TABLE `guest`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `image`
+-- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `bill`
+-- Constraints for table `bill`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `bill-guest` FOREIGN KEY (`id_guest`) REFERENCES `guest` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `bill_detail`
+-- Constraints for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD CONSTRAINT `detail-bill` FOREIGN KEY (`id_bill`) REFERENCES `bill` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `detail-product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment-guest` FOREIGN KEY (`id_guest`) REFERENCES `guest` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `comment-prodcut` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `image`
+-- Constraints for table `image`
 --
 ALTER TABLE `image`
-  ADD CONSTRAINT `image-product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `image-product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product-category` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

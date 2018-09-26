@@ -27,12 +27,10 @@ switch ($action) {
 				move_uploaded_file ( $image['tmp_name'] , $url );
 				$cate = new Brands(NULL,$name, $url );
 				$cate->insert();
-				
 			}else{
 				$MESSAGE = "Đã tồn tại danh mục này rồi";
 			}
 		}
-		$_POST=array();
 		break;
 
 	case "delete":
@@ -74,10 +72,10 @@ switch ($action) {
 			$cate_update = new Brands($id, $name, $url);
 			$cate_update->update();
 		}
-		$_POST = array();
-	
 		break;
 }
+	$_POST = array();
+	$_FILES = array();
 	require $url_requrire;
 //KẾT THÚC XỬ LÍ DANH MỤC
 ?>

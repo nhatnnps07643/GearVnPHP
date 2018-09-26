@@ -31,6 +31,7 @@
 		require 'model/product.php';
 		require 'model/brand.php';
 		require 'model/guest.php';
+		require 'model/image.php';
 		require 'model/core.php';
 		//Gọi đến các controller để xử lí
 		$MESSAGE='';
@@ -49,6 +50,10 @@
 
 			case 'guest':
 				require 'controller/admin/guest.Controller.php';
+				break;
+
+			case 'image':
+				require 'controller/admin/image.Controller.php';
 				break;
 			
 			default:

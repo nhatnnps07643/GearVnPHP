@@ -33,7 +33,6 @@
 					$MESSAGE = "Đã tồn tại danh mục này rồi";
 				}
 			}
-			$_POST=array();
 			break;
 
 		case "delete-cate":
@@ -79,6 +78,8 @@
 			$_POST = array();
 			break;
 	}
+	$_POST = array();
+	$_FILES = array();
 	require $url_requrire;
 	//KẾT THÚC XỬ LÍ DANH MỤC
 ?>

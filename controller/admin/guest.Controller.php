@@ -24,5 +24,7 @@
 			$url_requrire = 'view/404.php';
 			break;
 	}
+	$_POST = array();
+	$_FILES = array();
 	require $url_requrire;
 ?>

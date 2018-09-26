@@ -20,10 +20,9 @@
 			if(isset($_POST['name'])){
 				$name = $_POST['name'];
 				$price = $_POST['price'];
-				$image = "";
-				if(isset($_FILES['image'])){
-					$image = './view/Public/img/product/'.$_FILES['image']['name'];
-				}
+				
+				$image = './view/Public/img/product/' .$_FILES['image']['name'];
+				print_r($_FILES['image']);
 				$sale = $_POST['sale'];
 				$decs = $_POST['decs'];
 				$special =  isset($_POST['special-cb']) ? 1 : 0;
@@ -35,12 +34,11 @@
 				if(getByName($table,$name) == null){
 					$product = new Product(NULL, $name, $image, $price, $sale, $decs,$special,$stock,$guarantee,$id_category, $id_brand);
 					$product->insert();
-					if($image != '')
-						move_uploaded_file ( $_FILES['image']['tmp_name'] , $image );
+					move_uploaded_file($_FILES['image']['tmp_name'] , $image );
+					print_r($_FILES['image']['tmp_name'] );
 				}else {
 					$MESSAGE = "Sản phẩm đã tồn tại";
 				}
-				
 			}
 			break;
 		case "delete-multi-pro":
@@ -72,22 +70,25 @@
 				$id_brand = $_POST['brand'];
 				isset($_POST['cb']) ? $cb = 1 : $cb = 0;
 				$url= '';
-				if(isset($_FILES['image'])){
+				if( $_FILES['image']['name'] != null){
 					$image = $_FILES['image'];
-					$url = './view/Public/img/product/'.$image['name'];
-					move_uploaded_file ( $image['tmp_name'] , $url );
+					$url = './view/Public/img/product/'.$_FILES['image']['name'];
+					move_uploaded_file($_FILES['image']['tmp_name'] , $url );
+					echo "vào";
+					print_r($_FILES['image']['tmp_name']);
 				}else{
 					$url = $_POST['hiddenIMG'];
 				}
 				$product = new Product($id, $name, $url, $price, $sale, $decs,$special,$stock,$guarantee,$id_category, $id_brand);
 				$product->update();
 			}
-			$_POST = array();
 		break;
 		//KẾT THÚC XỬ LÍ DANH MỤC
 		default :
 			$url_requrire = 'view/404.php';
 			break;
 	}
+	$_POST = array();
+	// $_FILES = array();
 	require $url_requrire;
 ?>

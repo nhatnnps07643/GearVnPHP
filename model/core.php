@@ -19,7 +19,6 @@
         $db = new connect();
         $query = "select * from $table";
         $result = $db->getList($query);
-        // print_r($result);
         return $result;
     }
     // Lấy cái gì đó từ ID 
@@ -32,7 +31,7 @@
     // Xóa danh mục
     function deleteById($table,$id){
         $db = new connect();
-        $query = "delete from $table where id = ".$id;
+		$query = "delete from $table where id = ".$id;
         $db->execute($query);
     }
     // Xóa nhiều danh mục
