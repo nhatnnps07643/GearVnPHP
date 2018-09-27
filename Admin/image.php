@@ -34,7 +34,6 @@ $url_image = "admin.php?path=image";
 		<div class="row mt-5">
 			<div class="col-md-12">
 				<h2 class="text-center h2" >Danh sách Hình Ảnh</h2>
-
 				<form action="<?=$url_image?>" method="post">
 					<div class="menu-big mb-3 d-flex">
 						<div class="btn bg-warning select-all" >Chọn tất cả</div>

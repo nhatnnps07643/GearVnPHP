@@ -83,9 +83,9 @@ $url = "admin.php?path=brands";
 						</thead>
 						<tbody>
 						<?php
-							if(isset($_POST['name_search']))
+							if(isset($_REQUEST['name_search']))
 								// Nếu có tồn tại cái search
-								$result = searchByName($table,$_POST['name_search']);
+								$result = searchByName($table,$_REQUEST['name_search']);
 							else
 								$result = getList($table);
 							while($set = $result->fetch()){ 
