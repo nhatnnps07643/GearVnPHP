@@ -38,8 +38,8 @@ class Image {
 	// Cập nhật một danh mục
 	function update(){
 		$db = new connect();
-		$query = "update image set name = '".$this->name."', image.show=";
-		$query .= $this->show.", img='".$this->img;
+		$query = "update image set link = '$this->link',";
+		$query .= "id_product = '$this->id_product";
 		$query .= "' where id=".$this->id;
 		$db->execute($query);
 	}

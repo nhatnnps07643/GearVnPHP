@@ -21,6 +21,16 @@
         $result = $db->getList($query);
         return $result;
     }
+
+    function getListMulti($table,$select,$list_id){
+        $db = new connect();
+        $str = implode(',', $list_id);
+        $query = "select * from $table where $select IN ( $str )";
+        $result = $db->getList($query);
+        return $result;
+    }
+        
+
     // Lấy cái gì đó từ ID 
     function getById($table, $id) {
         $db = new connect();
@@ -33,12 +43,15 @@
         $db = new connect();
 		$query = "delete from $table where id = ".$id;
         $db->execute($query);
+        print_r($db->execute($query));
     }
     // Xóa nhiều danh mục
     function deleteMulti($table,$list){
         $db = new connect();
         $str = implode(',',$list);
         $query = "delete from $table where id IN (".$str.")";
+        echo $query;
         $db->execute($query);
     }
+   
 ?>
