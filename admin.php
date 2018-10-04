@@ -34,6 +34,7 @@
 		require 'model/image.php';
 		require 'model/core.php';
 		//Gọi đến các controller để xử lí
+		ini_set('upload_max_filesize', '10M');
 		$MESSAGE='';
 		switch ($path) {
 			case 'category':

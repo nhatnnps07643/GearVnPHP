@@ -48,6 +48,13 @@ class product {
         $result = $db->getList($select);
         return $result;
 	}
+
+    static function getProductBySpecial($top){
+        $db = new connect();
+        $select = "select * from product where special = 1 limit $top";
+		$result = $db->getList($select);
+        return $result;
+	}
 	// Lấy sản phẩm bằng Id
     function insert(){
         $db = new connect();

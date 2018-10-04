@@ -36,7 +36,6 @@ class Guest {
 		$db = new connect();
 		$query = "insert into guest values(NULL,'$this->name','$this->email',";
 		$query .= "'$this->password',NULL,' $this->image', '$this->address','$this->number',1 )";
-		echo $query;
 		$db->execute($query);
 	}
 	// Cập nhật một danh mục

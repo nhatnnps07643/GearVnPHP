@@ -70,7 +70,6 @@
 					move_uploaded_file ( $image['tmp_name'] , $url );
 				}else{
 					$url = $_POST['hiddenIMG'];
-					echo $url;
 				}
 				$cate_update = new Category($id, $name , $cb, $url);
 				$cate_update->update();

@@ -43,14 +43,12 @@
         $db = new connect();
 		$query = "delete from $table where id = ".$id;
         $db->execute($query);
-        print_r($db->execute($query));
     }
     // Xóa nhiều danh mục
     function deleteMulti($table,$list){
         $db = new connect();
         $str = implode(',',$list);
         $query = "delete from $table where id IN (".$str.")";
-        echo $query;
         $db->execute($query);
     }
    

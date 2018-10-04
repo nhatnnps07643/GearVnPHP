@@ -1,11 +1,8 @@
 <?php
-
-//bat dau quan ly session voi mot cookie dai han
-session_start();
-
-//Tao mac dinh bien session cho nguoi dung sau khi dang nhap thanh cong
-
 //Tao mang thong tin ve gio hang neu can
+$table = 'product';
+$route = 'index.php';
+
 if(!isset($_SESSION['cart']))
     $_SESSION['cart']=array();
 
@@ -15,9 +12,9 @@ elseif (isset ($_POST['action']))
     $action = $_POST['action'];
 else
     $action="home";
-
 switch ($action){
-    case "home":
+	case "home":
+
         include './view/home.php';
         break;
 	default: 
@@ -25,5 +22,3 @@ switch ($action){
 		break;
 }
 ?>
-
-        

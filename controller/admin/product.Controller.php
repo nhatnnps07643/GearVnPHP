@@ -22,7 +22,6 @@
 				$price = $_POST['price'];
 				
 				$image = './view/Public/img/product/' .$_FILES['image']['name'];
-				print_r($_FILES['image']);
 				$sale = $_POST['sale'];
 				$decs = $_POST['decs'];
 				$special =  isset($_POST['special-cb']) ? 1 : 0;
@@ -35,7 +34,6 @@
 					$product = new Product(NULL, $name, $image, $price, $sale, $decs,$special,$stock,$guarantee,$id_category, $id_brand);
 					$product->insert();
 					move_uploaded_file($_FILES['image']['tmp_name'] , $image );
-					print_r($_FILES['image']['tmp_name'] );
 				}else {
 					$MESSAGE = "Sản phẩm đã tồn tại";
 				}
@@ -74,7 +72,6 @@
 					$image = $_FILES['image'];
 					$url = './view/Public/img/product/'.$_FILES['image']['name'];
 					move_uploaded_file($_FILES['image']['tmp_name'] , $url );
-					echo "vào";
 					print_r($_FILES['image']['tmp_name']);
 				}else{
 					$url = $_POST['hiddenIMG'];

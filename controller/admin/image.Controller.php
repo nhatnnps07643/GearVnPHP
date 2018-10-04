@@ -33,7 +33,6 @@
 			$_POST = array();
 			break;
 		case "delete":
-		echo "vào luôn";
 			deleteById($table, $_GET['id']);
 			break;
 
