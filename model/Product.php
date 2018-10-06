@@ -49,19 +49,47 @@ class product {
         return $result;
 	}
 
-    static function getProductBySpecial($top){
+    static function getProductSpecial($top){
         $db = new connect();
-        $select = "select * from product where special = 1 limit $top";
-		$result = $db->getList($select);
+        $query = "select * from product where special = 1 limit $top";
+		$result = $db->getList($query);
         return $result;
 	}
-	// Lấy sản phẩm bằng Id
+
+    static function getProductCate($id){
+        $db = new connect();
+        $query = "select * from product where id_category = $id";
+		$result = $db->getList($query);
+        return $result;
+	}
+
+    static function getProductNew($top){
+        $db = new connect();
+        $query = "select * from product  limit $top";
+		$result = $db->getList($query);
+        return $result;
+	}
+
+    static function getProductPurchases($top){
+        $db = new connect();
+		$query = "select * from product ORDER BY purchases DESC limit $top";
+		$result = $db->getList($query);
+        return $result;
+	}
+
     function insert(){
         $db = new connect();
         $query = "insert into product values(NULL,'$this->name','$this->image',$this->price,$this->sale,'$this->date_created',";
         $query .= "'$this->decs',$this->special,$this->view,$this->stock, $this->guarantee,$this->id_category,$this->brand)";
         $db->execute($query);
-    }
+	}
+	
+    static function updatePurchases($id ,$purchases){
+        $db = new connect();
+		$query = "update product set purchases = $purchases where id = $id ";
+        $db->execute($query);
+	}
+	
     function update(){
         $db = new connect();
         $query = "update product set name = '$this->name', image = '$this->image',";

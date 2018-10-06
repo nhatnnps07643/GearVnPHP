@@ -1,9 +1,9 @@
-<!-- CÁC HÀM SỬ DỤNG CHUNG -->
+
 <?php 
     // hàm tìm kiếm tương đối tên
     function searchByName($table,$name) {
         $db = new connect();
-        $query = "select * from $table where name like '%$name%'";
+		$query = "select * from $table where name like '%$name%'";
         $result =  $db->getList($query);
         return $result;
     }

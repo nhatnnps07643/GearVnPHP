@@ -1,10 +1,6 @@
 
-	<!-- ----------CONTROLLER------------ -->
 	<?php 
 		session_start();
-		// Điều khiển xử lí
-		if(!isset($_SESSION['cart']))
-			$_SESSION['cart'] = array();
 		if(isset($_GET['path']))
 			$path=$_GET['path'];
 		elseif (isset ($_POST['path'])) 
@@ -22,9 +18,18 @@
 		require 'model/brand.php';
 		require 'model/guest.php';
 		require 'model/image.php';
+		require 'model/comment.php';
+		require 'model/bill.php';
+		require 'model/billdetail.php';
 		require 'model/core.php';
 		//Gọi đến các controller để xử lí
+		$route = 'index.php';
 		$MESSAGE='';
+		if(!isset($_SESSION['cart'])){
+			$_SESSION['cart']=array();
+			$_SESSION['count']=array();
+			echo "tạo section";
+		}
 		switch ($path) {
 			case 'index':
 				require 'controller/page/home.Controller.php';

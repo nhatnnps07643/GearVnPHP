@@ -79,6 +79,7 @@
     <script src="./view/Public/js/core.js"></script>
     <script src="./view/Public/js/plugins.js"></script>
     <script src="./view/Public/js/app.js"></script>
+    <script src="./view/Public/js/add.js"></script>
     <!-- endinject --><!-- ////////////// Google Analytics ////////////// -->
     <script>
       (function(d, s, id) {

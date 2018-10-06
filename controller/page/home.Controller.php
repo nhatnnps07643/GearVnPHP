@@ -2,7 +2,6 @@
 //Tao mang thong tin ve gio hang neu can
 $table = 'product';
 $route = 'index.php';
-
 if(!isset($_SESSION['cart']))
     $_SESSION['cart']=array();
 
@@ -14,7 +13,6 @@ else
     $action="home";
 switch ($action){
 	case "home":
-
         include './view/home.php';
         break;
 	default: 

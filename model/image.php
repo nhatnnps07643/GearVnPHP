@@ -26,9 +26,14 @@ class Image {
         $result = $db->getList($query);
         return $result;
 	}
-	// search by name
-	
-	// Thêm một danh mục
+
+	static function GetImageByIdProduct($id){
+		$db = new connect();
+		$query = "select * from image where id_product = $id ";
+		$result = $db->getList($query);
+		return $result;
+	}
+
 	function insert(){
 		$db = new connect();
 		$query = "insert into image values(NULL,";

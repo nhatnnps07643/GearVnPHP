@@ -19,7 +19,7 @@
   <body class="canhcam-develop canhcam-index-page" id="top-page">
     <div id="fb-root"></div><!-- ////////////// Header ////////////// -->
     <header class="canhcam-header-2">
-      <nav class="navbar navbar-expand-lg container"><a class="navbar-brand" href="#"><img src="./view/Public/img/logo.png" alt="Logo"></a>
+      <nav class="navbar navbar-expand-lg container"><a class="navbar-brand" href="index.php"><img src="./view/Public/img/logo.png" alt="Logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#CCMenuHeader" aria-controls="CCMenuHeader" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
         <div class="collapse navbar-collapse" id="CCMenuHeader">
           <div class="mr-auto"></div>
@@ -28,10 +28,27 @@
             <li class="nav-item"><a class="nav-link" href="#">Về chúng tôi</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
           </ul>
-          <div class="group input-group mr-3">
-            <input class="form-control" placeholder="search">
-            <button class="btn" type="submit">Search</button>
-          </div>
+		  
+		  <form action="index.php?path=product" method='POST'>
+			<div class="group input-group mr-3">
+				<input class="form-control" placeholder ="search"  name='txtSearch' type="search">
+				<button class="btn" type="submit"  name='action' value='search' >Search</button>
+			</div>
+		  </form>
+          <a href="?path=product&action=cart">
+		  	<button type="button" class="btn btn-info mr-2">
+				Giỏ hàng <span class="badge badge-light">
+				<?php 
+				if(isset($_SESSION['count'])){
+					echo sizeof($_SESSION['count']);
+				}
+				else{
+					echo 0;
+				}
+				?>
+				</span>
+			</button>
+		  </a>
           <div class="user dropdown"><a class="nav-link" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
               <div class="box-img"><img src="./view/Public/img/avatar.jpg" alt=""></div></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="#"><i class="fas fa-user-alt"></i>Thông tin</a><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a></div>
