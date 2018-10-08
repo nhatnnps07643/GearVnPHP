@@ -29,9 +29,13 @@ class Bill{
 		return $id[0];
 	}
 	
-	public function getID(){
+	static public function GetById_guest($id_guests){
 		$db = new connect();
+		$query = "select * from bill where id_guest = $id_guests";
+		$result = $db->getList($query);
+		return $result;
 	}
+
     static function updateStatus($id){
 		$db = new connect();
 		$query = "update bill set status = 1 where id = $id ";

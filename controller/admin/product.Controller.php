@@ -20,7 +20,6 @@
 			if(isset($_POST['name'])){
 				$name = $_POST['name'];
 				$price = $_POST['price'];
-				
 				$image = './view/Public/img/product/' .$_FILES['image']['name'];
 				$sale = $_POST['sale'];
 				$decs = $_POST['decs'];

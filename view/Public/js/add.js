@@ -10,10 +10,9 @@ $('.textCount').on('change', function() {
             $('#total').html(parseFloat(data).toLocaleString(window.document.documentElement.lang) + " VNĐ");
         });
     });
-    // Lấy tổng tiền ra
-
 })
 
+// Xử lí các nút cập nhậ trong quản lí thông tin cá nhân
 $(window).ready(function() {
     // Lấy tổng tiền khi web load xong
     $.get('index.php', { path: 'product', action: 'total' }, function(data) {

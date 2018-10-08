@@ -69,13 +69,13 @@
                                     <input type="checkbox">
                                     <input type="checkbox">
                                 </div>
-								<input type="hidden" name='hideID' value="<?=$result['id']?>">
-								<input type="hidden" name='hideID' value="<?=$result['id']?>">
+								<input type="hidden" name='hideID' value="<?=$result['id']?>"/>
+								<input type="hidden" name='hideID' value="<?=$result['id']?>"/>
                                 <div class="group-content">
-                                    <textarea name="content" style="width :100%" rows="4"></textarea>
+                                    <textarea name="content"  style="width :100%" rows="4"></textarea>
                                 </div>
                                 <div class="group-submit">
-                                    <button type="submit" name='action' value="comment">Bình Luận</button>
+                                    <button type="submit" <?php if(!isset($_SESSION['user'])) echo 'disabled'; ?> name='action' value="comment">Bình Luận</button>
                                 </div>
                             </form>
                             <div class="tag-show-comment">

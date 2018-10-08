@@ -37,6 +37,22 @@ class Guest {
 		$query = "insert into guest values(NULL,'$this->name','$this->email',";
 		$query .= "'$this->password',NULL,' $this->image', '$this->address','$this->number',1 )";
 		$db->execute($query);
+		$id = $db->getInstance("SELECT LAST_INSERT_ID()");
+		return $id;
+	}
+	
+	function issetGuest($email){
+		$db = new connect();
+		$query = "select * from guest where email = '$email'";
+		$result = $db->getInstance($query);
+		return $result;
+	}
+
+	function getByEmail($email){
+		$db = new connect();
+		$query = "select * from guest where email = $email";
+		$result = $db->getList($query);
+		return $result;
 	}
 	// Cập nhật một danh mục
 	function update(){
@@ -47,6 +63,13 @@ class Guest {
 		$query .= "'where id= ".$this->id;
 		$db->execute($query);
 	}
+
+	static function updateinfo($id){
+		$db = new connect();
+		$query = "update guest set name =";
+		$db->execute($query);
+	}
+
 	function reset($id){
         $db = new connect();
         $query = "update guest set password='123456789' where id = $id";

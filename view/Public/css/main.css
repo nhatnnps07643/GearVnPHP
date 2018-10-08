@@ -43,7 +43,6 @@
 }
 
 html {
-  font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -10038,9 +10037,7 @@ html, body {
   display: block;
 }
 
-@import url("https://fonts.googleapis.com/css?family=Encode+Sans:300,400,600,700,900&amp;subset=vietnamese");
 html, body {
-  font-family: 'Encode Sans', sans-serif;
   font-size: 14px;
   font-weight: 500;
   height: 100%;
@@ -10441,12 +10438,12 @@ header.fixedheader {
 }
 
 .item-product figure .boximg {
-  border-radius: 3px;
-  background: rgba(127, 140, 141, 0.2);
-  padding: 1rem;
-  position: relative;
-  overflow: hidden;
-}
+    border-radius: 3px;
+    background: rgba(127, 140, 141, 0.2);
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
 
 .item-product figure .boximg img {
   width: 100%;
@@ -11621,3 +11618,4 @@ section.detail-2 .tag-show-comment figure figcaption {
 
 
 /*# sourceMappingURL=main.css.map */
+

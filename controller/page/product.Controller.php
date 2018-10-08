@@ -7,7 +7,8 @@ if(isset($_GET['action']))
 elseif (isset ($_POST['action'])) 
     $action = $_POST['action'];
 else
-    $action="product";
+	$action="product";
+	
 switch ($action){
 	case "product":
 		if(isset($_GET['id']))
@@ -47,10 +48,9 @@ switch ($action){
 				echo $_GET['id'];
 			}
 		}
-
 		header('Location: /GearVnPHP/index.php?path=product&action=cart');
 		break;
-
+		
 	case "change":
 		if(isset($_GET['id'])){
 			foreach ($_SESSION['cart'] as $key => $value) {
@@ -75,18 +75,16 @@ switch ($action){
 		require './view/cart.php';
 		break;
 		
-
 	case "detail":
-		if(isset($_POST['content'])){
-			$result = getById($table, $_GET['id']);
-			$arrayimg = Image::GetImageByIdProduct($_GET['id']);
-			$comment = new Comment('NULL', $_POST['content'], $_POST['hideID'], 2);
+		if(isset($_POST['content']) && $_POST['content'] != ''){
+			echo $_POST['content'];
+			$comment = new Comment('NULL', $_POST['content'], $_POST['hideID'], $_SESSION['user']['id']);
 			$comment->insert();
 		}
 		$result = getById($table, $_GET['id']);
 		$arrayimg = Image::GetImageByIdProduct($_GET['id']);
 		$comment = Comment::getComment($_GET['id']);
-		include './view/detail.php';
+		include "./view/detail.php";
 		break;
 
 	case "total":
@@ -105,7 +103,7 @@ switch ($action){
 
 	case "pay":
 		$bill = new Bill($_SESSION['total'], $_POST['address'] , $_POST['number'],
-							$_POST['payments'], $_POST['noted'], 2 );
+							$_POST['payments'], $_POST['noted'], $_SESSION['user']['id'] );
 		$id = $bill->insert();
 		foreach ($_SESSION['cart'] as $key => $value) {
 			$bill_detail = new BillDetail($value, $_SESSION['count'][$key], $id );

@@ -12,19 +12,19 @@
 					?>
 						<div class="form-group">
 							<label for="">Họ và tên</label>
-							<input type="text" value='<?php if(isset($guest)) echo $guest['name'] ?>' name='name' class="form-control" id=""  placeholder="Họ tên khách hàng">
+							<input type="text" value='<?php if(isset($_SESSION['user'])) echo $_SESSION['user']['name'] ?>' name='name' class="form-control" id=""  placeholder="Họ tên khách hàng">
 						</div>
 						<div class="form-group">
 							<label for="">Email address</label>
-							<input type="email" value='<?php if(isset($guest)) echo $guest['email'] ?>' name='address' class="form-control" id="" placeholder="Email">
+							<input type="email" value='<?php if(isset($_SESSION['user'])) echo $_SESSION['user']['email'] ?>' name='address' class="form-control" id="" placeholder="Email">
 						</div>
 						<div class="form-group">
 							<label for="">Địa chỉ</label>
-							<input type="text" value='<?php if(isset($guest)) echo $guest['address'] ?>' name='address' class="form-control" id="" placeholder="Địa chỉ">
+							<input type="text" value='<?php if(isset($_SESSION['user'])) echo $_SESSION['user']['address'] ?>' name='address' class="form-control" id="" placeholder="Địa chỉ">
 						</div>
 						<div class="form-group">
 							<label for="">Số điện thoại</label>
-							<input type="number" value='<?php if(isset($guest)) echo $guest['number'] ?>' name='number' class="form-control" id="" placeholder="Số điện thoại liên lạc">
+							<input type="number" value='<?php if(isset($_SESSION['user'])) echo $_SESSION['user']['number'] ?>' name='number' class="form-control" id="" placeholder="Số điện thoại liên lạc">
 						</div>
 						<div class="form-group">
 							<label for="">Thanh toán</label>

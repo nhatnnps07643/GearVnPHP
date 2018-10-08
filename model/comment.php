@@ -24,7 +24,7 @@ class Comment {
 	function insert(){
 		$db = new connect();
 		$query = "insert into comment values(NULL,'$this->time',";
-		$query .= "'$this->content',$this->id_product,$this->id_guest,0)";
+		$query .= "'$this->content',$this->id_product,$this->id_guest, 0 )";
 		$db->execute($query);
 	}
 

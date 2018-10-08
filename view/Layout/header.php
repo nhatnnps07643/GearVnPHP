@@ -35,24 +35,35 @@
 				<button class="btn" type="submit"  name='action' value='search' >Search</button>
 			</div>
 		  </form>
-          <a href="?path=product&action=cart">
-		  	<button type="button" class="btn btn-info mr-2">
-				Giỏ hàng <span class="badge badge-light">
-				<?php 
-				if(isset($_SESSION['count'])){
-					echo sizeof($_SESSION['count']);
-				}
-				else{
-					echo 0;
-				}
-				?>
-				</span>
-			</button>
-		  </a>
-          <div class="user dropdown"><a class="nav-link" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-              <div class="box-img"><img src="./view/Public/img/avatar.jpg" alt=""></div></a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="#"><i class="fas fa-user-alt"></i>Thông tin</a><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a></div>
+          <a href="?path=product&action=cart" class='btn btn-info mr-2 text-white'>
+              Giỏ hàng <span class="badge badge-light">
+              <?php 
+              if(isset($_SESSION['count'])){
+                echo sizeof($_SESSION['count']);
+              }
+              else{
+                echo 0;
+              }
+              ?>
+              </span>
+        </a>
+        <?php if(isset($_SESSION['user'])){ ?>
+          <!-- Đăng nhập thành công -->
+           <div class="user dropdown">
+             <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"><div class="box-img"><img src="<?=$_SESSION['user']['image']?>" alt=""></div></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item " href="index.php?path=user&action=profile"><i class="fas fa-user-alt"></i>Thông tin</a>
+              <a class="dropdown-item " href="index.php?path=user&action=logout"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+            </div>
           </div>
+        <?php } else { ?>
+        <!-- Đăng nhập // Đăng kí -->
+            <div class="ml-3">
+              <a href="index.php?path=user&action=login" class='btn btn-warning text-white'> Đăng nhập</a>
+              <a href="index.php?path=user&action=registion" class='btn btn-info ml-3 text-white'> Đăng kí</a>
+
+            </div>
+        <?php } ?>
         </div>
       </nav>
     </header>
