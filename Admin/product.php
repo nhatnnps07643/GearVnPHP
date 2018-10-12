@@ -13,7 +13,12 @@ $url_product = "admin.php?path=product";
 				</div>
 				<div class="form-group">
 					<label for="decs-prod">MÔ TẢ</label><br>
-					<textarea name="decs" id="" rows="5" style="width: 100%"></textarea>
+					<textarea name="decs"></textarea>
+					<script>
+						CKEDITOR.replace( 'decs' );
+					</script>
+					<!-- <textarea name="editor" id="editor">Menu</textarea> -->
+					<!-- <textarea name="decs" id="" rows="5" style="width: 100%"></textarea> -->
 				</div>
 
 			</div>
@@ -143,6 +148,11 @@ $url_product = "admin.php?path=product";
 			</div>
 		</div>
 	</div>
+	<script>
+    // window.onload = function() {
+    //     CKEDITOR.replace( 'editor' );
+    // };
+</script>
 <?php 
 include "admin/template/footer.php";
 ?>

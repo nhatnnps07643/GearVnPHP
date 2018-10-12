@@ -7,7 +7,7 @@
           <div class="row mt-5">
             <div class="col-md-4">
               <div class="card">
-                <div class="view overlay"></div><img class="card-img-top" src="<?=$_SESSION['user']['image']?>" alt="Card image cap" style='width: 300px; height: 300px ; object-fit: cover'>
+                <div class="view overlay"></div><img class="card-img-top" src="<?=$_SESSION['user']['image']?>" alt="Card image cap" style='height: 300px ; object-fit: cover'>
                 <div class="card-body bg-dark text-white">
                   <h4 class="card-title"><?=$_SESSION['user']['name']?></h4>
                   <hr class="bg-light">

@@ -74,13 +74,16 @@ switch ($action){
 		}
 		require './view/cart.php';
 		break;
-		
-	case "detail":
-		if(isset($_POST['content']) && $_POST['content'] != ''){
-			echo $_POST['content'];
-			$comment = new Comment('NULL', $_POST['content'], $_POST['hideID'], $_SESSION['user']['id']);
+	
+	case "comment":
+		if(isset($_GET['content']) && $_GET['content'] != ''){
+			$comment = new Comment('NULL', $_GET['content'], $_GET['hideID'], $_SESSION['user']['id']);
 			$comment->insert();
 		}
+		$comment = Comment::getComment($_GET['hideID']);
+		include "./view/comment.php";
+		break;
+	case "detail":
 		$result = getById($table, $_GET['id']);
 		$arrayimg = Image::GetImageByIdProduct($_GET['id']);
 		$comment = Comment::getComment($_GET['id']);

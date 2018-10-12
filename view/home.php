@@ -63,7 +63,7 @@ $route = "index.php?path=product";
 						</div>
 						<figcaption>
 							<h3>$name</h3>
-							<div class='price mt-3'>$price đ</div>
+							<div class='price mt-3'>".number_format($price)." VNĐ</div>
 						</figcaption>
 					</figure></a></div>";
 				}
@@ -95,7 +95,7 @@ $route = "index.php?path=product";
 						</div>
 						<figcaption>
 							<h3>$name</h3>
-							<div class='price mt-3'>$price đ</div>
+							<div class='price mt-3'>".number_format($price)." VNĐ</div>
 						</figcaption>
 					</figure></a></div>";
 				}
@@ -131,7 +131,7 @@ $route = "index.php?path=product";
 						</div>
 						<figcaption>
 							<h3>$name</h3>
-							<div class='price mt-3'>$price đ</div>
+							<div class='price mt-3'>".number_format($price)." VNĐ</div>
 						</figcaption>
 					</figure></a></div>";
 				}

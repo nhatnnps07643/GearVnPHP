@@ -21,6 +21,7 @@ class product {
 	var $decs = null;
 	var $special = null;
 	var $view = null;
+	var $purchases = null;
 	var $stock = null;
 	var $guarantee = null;
 	var $id_category = null;
@@ -37,6 +38,7 @@ class product {
 		$this->special = $special;
 		$this->view = 0;
 		$this->stock = $stock;
+		$this->purchases = 0;
 		$this->guarantee = $guarantee;
 		$this->id_category = $id_category;
 		$this->brand = $brand;
@@ -51,7 +53,7 @@ class product {
 
     static function getProductSpecial($top){
         $db = new connect();
-        $query = "select * from product where special = 1 limit $top";
+        $query = "select * from product where special = 1 ORDER BY id DESC limit $top";
 		$result = $db->getList($query);
         return $result;
 	}
@@ -80,7 +82,7 @@ class product {
     function insert(){
         $db = new connect();
         $query = "insert into product values(NULL,'$this->name','$this->image',$this->price,$this->sale,'$this->date_created',";
-        $query .= "'$this->decs',$this->special,$this->view,$this->stock, $this->guarantee,$this->id_category,$this->brand)";
+		$query .= "'$this->decs',$this->special,$this->view,$this->purchases,$this->stock, $this->guarantee,$this->id_category,$this->brand)";
         $db->execute($query);
 	}
 	

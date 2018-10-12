@@ -29,7 +29,7 @@
             <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
           </ul>
 		  
-		  <form action="index.php?path=product" method='POST'>
+		  <form class='m-0' action="index.php?path=product" method='POST'>
 			<div class="group input-group mr-3">
 				<input class="form-control" placeholder ="search"  name='txtSearch' type="search">
 				<button class="btn" type="submit"  name='action' value='search' >Search</button>
@@ -50,7 +50,7 @@
         <?php if(isset($_SESSION['user'])){ ?>
           <!-- Đăng nhập thành công -->
            <div class="user dropdown">
-             <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"><div class="box-img"><img src="<?=$_SESSION['user']['image']?>" alt=""></div></a>
+             <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"><div class="box-img"><img style='width:150px; height: 150px; object-fit:cover' src="<?=$_SESSION['user']['image']?>" alt=""></div></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item " href="index.php?path=user&action=profile"><i class="fas fa-user-alt"></i>Thông tin</a>
               <a class="dropdown-item " href="index.php?path=user&action=logout"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>

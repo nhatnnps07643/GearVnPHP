@@ -26,7 +26,7 @@ switch ($action){
 
     case "profile":
         $Arrbill = Bill::GetById_guest($_SESSION['user']['id']);
-        include './view/profile.php';    
+        include './view/profile.php';
         break;
 
     case "updateinfo":
@@ -70,17 +70,17 @@ switch ($action){
             {
                 if($password == $pass_re){
                     $guest = new Guest(NULL,$name, $email,md5($password),NULL,$image,$address,$number);
-                    $id = $guest->insert();
+					$id = $guest->insert();
                     move_uploaded_file($_FILES['image']['tmp_name'] , $image );
-                    $_SESSION['user'] = [
-                        'id' => $ $id,
+					$_SESSION['user']  = [
+                        'id' => $id,
                         'email' => $email,
                         'name' => $name,
                         'image' => $image,
                         'address' => $address,
                         'number' => $number, 
                     ];
-                    header('location: /GearVnPHP/index.php');
+					header('location: /GearVnPHP/index.php');
                 }
                 else{
                     $MESSAGE = 'Mật khẩu không trùng';

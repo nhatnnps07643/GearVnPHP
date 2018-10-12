@@ -19,3 +19,11 @@ $(window).ready(function() {
         $('#total').html(parseFloat(data).toLocaleString(window.document.documentElement.lang) + " VNĐ");
     });
 })
+
+// Xử lí phần detail Comment
+$("#btnComment").on('click', function() {
+    $.get('index.php', { path: 'product', action: 'comment', content: $('#contentComment').val(), hideID: $('#nameProduct').val() }, function(data) {
+        $('#boxcomment').html(data);
+        $('#contentComment').val('')
+    });
+});

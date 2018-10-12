@@ -21,9 +21,6 @@
                             <h3 class="h3 mt-3">QUANTITY</h3>
                             <div class="form-inline" id="quantity">
                                 <div class="form-group">
-                                    <input value="1">
-                                </div>
-                                <div class="form-group mx-sm-3">
                                     <a href='<?="$route&action=add&id=".$result['id']?>' class="btn btn-primary">Add to cart</a>
                                 </div>
                             </div>
@@ -53,50 +50,35 @@
                         </div>
                         <div class="tag-info">
                             <p>Nội dung</p>
-							<div class="h4" style='min-height: 500px'>
-							<?=$result['description']?>
+							<div  style='min-height: 500px;'>
+								<?=$result['description']?>
 							</div>
                         </div>
                     </div>
-                    <div class="col-md-6 bor-left">
-                        <div class="title">
-                            <h2 class="font-weight-bold h2">Đánh giá và Bình luận</h2>
-                            <form class="tag-comment" action="" method='POST'>
-                                <div class="group-start">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </div>
-								<input type="hidden" name='hideID' value="<?=$result['id']?>"/>
-								<input type="hidden" name='hideID' value="<?=$result['id']?>"/>
-                                <div class="group-content">
-                                    <textarea name="content"  style="width :100%" rows="4"></textarea>
-                                </div>
-                                <div class="group-submit">
-                                    <button type="submit" <?php if(!isset($_SESSION['user'])) echo 'disabled'; ?> name='action' value="comment">Bình Luận</button>
-                                </div>
-                            </form>
-                            <div class="tag-show-comment">
-								<?php 
-									foreach ($comment as $key => $value) {
-										extract($value);
-										$user = getById('guest', $id_guest);
-										$avatar = $user['image'];
-										$name = $user['name'];
-										echo "<div class='user'>
-												<figure><img src='$avatar' alt='>
-													<p class='mb-0'>$name</p>
-													<figcaption>
-														<p>$content</p>
-													</figcaption>
-												</figure>
-											</div>";
-									}
-								?>
-                            </div>
-                        </div>
+                    <div class="col-md-6 bor-left" >
+						<div class="">
+							<h2 class="font-weight-bold h2">Đánh giá và Bình luận</h2>
+							<form class="tag-comment" action="" method='POST'>
+								<!-- <div class="group-start">
+									<input type="checkbox">
+									<input type="checkbox">
+									<input type="checkbox">
+									<input type="checkbox">
+									<input type="checkbox">
+								</div> -->
+								<input type="hidden" id='nameProduct' name='hideID' value="<?=$result['id']?>"/>
+								<div class="group-content">
+									<textarea name="content" id="contentComment" style="width :100%" rows="4"></textarea>
+								</div>
+								<div class="group-submit">
+									<button type="button" id='btnComment' <?php if(!isset($_SESSION['user'])) echo 'disabled'; ?> name='action' value="comment">Bình Luận</button>
+								</div>
+							</form>
+							<div class="tag-show-comment" id='boxcomment'>
+							<?php include './view/comment.php'?>
+							</div>
+						</div>
+						
                     </div>
                 </div>
             </div>

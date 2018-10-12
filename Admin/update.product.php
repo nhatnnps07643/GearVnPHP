@@ -16,7 +16,10 @@
 					</div>
 					<div class="form-group">
 						<label for="decs-prod">MÔ TẢ</label><br>
-						<textarea name="decs"  id="" rows="5" style="width: 100%"><?=$result['description']?></textarea>
+						<textarea name="decs" ><?=$result['description']?></textarea>
+						<script>
+							CKEDITOR.replace( 'decs' );
+						</script>
 					</div>
 				</div>
 				<div class="col-md-8">

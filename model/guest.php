@@ -38,7 +38,7 @@ class Guest {
 		$query .= "'$this->password',NULL,' $this->image', '$this->address','$this->number',1 )";
 		$db->execute($query);
 		$id = $db->getInstance("SELECT LAST_INSERT_ID()");
-		return $id;
+		return $id[0];
 	}
 	
 	function issetGuest($email){
