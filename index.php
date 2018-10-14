@@ -28,7 +28,6 @@
 		if(!isset($_SESSION['cart'])){
 			$_SESSION['cart']=array();
 			$_SESSION['count']=array();
-			echo "tạo section";
 		}
 		switch ($path) {
 			case 'index':

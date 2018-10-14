@@ -80,11 +80,27 @@
 			}
 		break;
 		//KẾT THÚC XỬ LÍ DANH MỤC
+
+		// Phân trang----------------------------------
+		case "paging":
+			$id_temp = $_GET['page'];
+			if(!isset($_SESSION['page'])){
+				$_SESSION['page'] = $id_temp;
+			}
+			if($id_temp == 'Next')
+				$_SESSION['page']++;
+			elseif($id_temp == 'Previous')
+				$_SESSION['page']--;
+			else 
+			$_SESSION['page'] = $id_temp;
+
+			$listProduct = Product::getListPage($_SESSION['page'] * 10 - 10, $_SESSION['page'] * 10);
+			$url_requrire = './admin/partial/product.php';
+			break;
 		default :
 			$url_requrire = 'view/404.php';
 			break;
 	}
-	$_POST = array();
-	// $_FILES = array();
+
 	require $url_requrire;
 ?>

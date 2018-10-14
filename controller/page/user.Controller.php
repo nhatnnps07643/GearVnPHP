@@ -31,10 +31,8 @@ switch ($action){
 
     case "updateinfo":
         if(isset($_POST['name'])){
-            
         }
         break;
-
     case "login_handle":
         $email = $_POST['email']; 
         $password  = $_POST['password'];
@@ -85,14 +83,33 @@ switch ($action){
                 else{
                     $MESSAGE = 'Mật khẩu không trùng';
                 }
-               
             }
             else{
                 $MESSAGE = 'Tài khoản đã tồn tại';
             }
         }
         include './view/registion.php';
-        break;
+		break;
+		
+		//AJAX xử lý người dùng
+	case "update_user":
+		$id = $_POST['id'];
+		$pass_old = $_POST['password_old'];
+		$pass_new = $_POST['password_new'];
+		$userOld = getById('guest', $id);
+		$response = [
+			'status' => '',
+			'success' => false
+		];
+		if(md5($pass_old) == $userOld['password']){
+			Guest::updatepassword($id,md5($pass_new));
+			$response['success'] = true;
+		}else{
+			$response['status'] = 'Mật khẩu không đúng';
+		}
+		header('Content-type: application/json');
+		echo json_encode( $response );
+		break;
 	default: 
 		require 'view/404.php';
 		break;

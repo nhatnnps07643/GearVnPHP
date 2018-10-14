@@ -27,3 +27,21 @@ $("#btnComment").on('click', function() {
         $('#contentComment').val('')
     });
 });
+
+//Xử lí profile 
+$("#updatepass").on('click', function() {
+    var idUser = $('#iduser').attr('iduser');
+    var passOld = $('#password_old').val();
+    var passNew = $('#password_new').val();
+    var passNew_2 = $('#password_new_2').val();
+    if (passNew == passNew_2 && passNew != '') {
+        $.post('index.php', { path: 'user', action: 'update_user', id: idUser, password_old: passOld, password_new: passNew }, function(data) {
+            if (data.success == true) {
+                alert('Cập nhật mật khẩu thành công');
+            }
+        });
+    } else {
+        alert("Mật khẩu không trùng khớp");
+    }
+
+});

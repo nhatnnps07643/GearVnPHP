@@ -73,15 +73,15 @@
           </div>
         </div>
       </div>
-    </footer><!-- ////////////// End Footer ////////////// -->
-<!-- ////////////// Back to Top ////////////// --><a href="#top-page" id="back-to-top" title="Back to top"><span>TOP</span><i class="fa fa-angle-up"></i></a><!-- ////////////// Javascript Include ////////////// -->
-    <!-- inject:js -->
+    </footer>
+	<a href="#top-page" id="back-to-top" title="Back to top"><span>TOP</span><i class="fa fa-angle-up"></i></a>
     <script src="./view/Public/js/core.js"></script>
     <script src="./view/Public/js/plugins.js"></script>
     <script src="./view/Public/js/app.js"></script>
     <script src="./view/Public/js/add.js"></script>
-    <!-- endinject --><!-- ////////////// Google Analytics ////////////// -->
-    <script>
+
+   
+   <script>
       (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
@@ -115,3 +115,5 @@
     </script>
   </body>
 </html>
+
+ 

@@ -51,6 +51,13 @@ class product {
         return $result;
 	}
 
+    function getCount(){
+        $db = new connect();
+        $select = "select COUNT(id) from product";
+        $result = $db->getInstance($select);
+        return $result;
+	}
+
     static function getProductSpecial($top){
         $db = new connect();
         $query = "select * from product where special = 1 ORDER BY id DESC limit $top";

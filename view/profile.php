@@ -9,7 +9,7 @@
               <div class="card">
                 <div class="view overlay"></div><img class="card-img-top" src="<?=$_SESSION['user']['image']?>" alt="Card image cap" style='height: 300px ; object-fit: cover'>
                 <div class="card-body bg-dark text-white">
-                  <h4 class="card-title"><?=$_SESSION['user']['name']?></h4>
+                  <h4 class="card-title" id="iduser" iduser = '<?=$_SESSION['user']['id']?>'><?=$_SESSION['user']['name']?></h4>
                   <hr class="bg-light">
                   <div class="d-block">
                     <button class="btn btn-success" type="button" data-toggle="modal" data-target="#exampleModalAvatar" data-whatever="@mdo">Cập nhật hình đại diện</button>
@@ -55,20 +55,20 @@
                           <div class="modal-body">
                             <form>
                               <div class="form-group">
-                                <label class="col-form-label" for="">Mật khẩu củ</label>
-                                <input class="form-control" id="recipient-1" type="password">
+                                <label class="col-form-label" for="">Mật khẩu cũ</label>
+                                <input class="form-control" id="password_old" name='password_old' type="password">
                               </div>
                               <div class="form-group">
                                 <label class="col-form-label" for="">Mật khẩu mới</label>
-                                <input class="form-control" id="recipient-2" type="password">
+                                <input class="form-control" id="password_new" name='password_new' type="password">
                               </div>
                               <div class="form-group">
                                 <label class="col-form-label" for="">Nhập lại</label>
-                                <input class="form-control" id="recipient-3" type="password">
+                                <input class="form-control" id="password_new_2" name='password_new_2' type="password">
                               </div>
                               <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Bỏ</button>
-                                <button class="btn btn-success" data-dismiss="modal" type="button">Đổi mật khẩu</button>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Tắt</button>
+                                <button class="btn btn-success"  id='updatepass' type="button">Đổi mật khẩu</button>
                               </div>
                             </form>
                           </div>

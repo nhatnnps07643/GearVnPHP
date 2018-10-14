@@ -2,8 +2,8 @@
 include "admin/template/header.php";
 //Đường dẫn tới controller điều khiển
 $url_product = "admin.php?path=product";
+$count = Product::getCount();
 ?>
-
 	<div class="container mt-5 product">
 		<form action="?path=product" class="row justify-content-center" method="POST" enctype="multipart/form-data">
 			<div class="col-md-8">
@@ -17,10 +17,7 @@ $url_product = "admin.php?path=product";
 					<script>
 						CKEDITOR.replace( 'decs' );
 					</script>
-					<!-- <textarea name="editor" id="editor">Menu</textarea> -->
-					<!-- <textarea name="decs" id="" rows="5" style="width: 100%"></textarea> -->
 				</div>
-
 			</div>
 			<div class="col-md-8">
 				<div class="row ">
@@ -93,8 +90,6 @@ $url_product = "admin.php?path=product";
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="text-center h2" >Danh sách sản phẩm</h2>
-				<!-- <h4 class="alert alert-success">Admin nên chọn tối 8 - 10 sản phẩm được hiển thị trên menu danh mục</h4>
-				<h4 class="alert alert-info">Hiện giờ có <?php $count = Category::countCateSelect(); echo $count[0] ?> danh mục được hiển thị</h4> -->
 				<form action="" method="POST">
 					<div class="menu-big mb-3 d-flex">
 						<div class="btn bg-warning select-all" >Chọn tất cả</div>
@@ -105,47 +100,28 @@ $url_product = "admin.php?path=product";
 							<button class="btn btn-outline-success my-2 my-sm-0" value="search" type="submit">Search</button>
    					 	</div>
 					</div>
-					</div>
-					<table class="table table-bordered">
-						<thead class="thead-dark">
-						<tr class="">
-							<th scope="col">ID</th>
-							<th scope="col">Tên</th>
-							<th scope="col">Giá niêm iết</th>
-							<th scope="col">Giá bán</th>
-							<th scope="col">Ngày tạo</th>
-							<th scope="col">Kho</th>
-							<th scope="col">Hình chính</th>
-							<th scope="col">Thao tác</th>
-
-						</tr>
-						</thead>
-						<tbody>
-						<?php
-							if(isset($_REQUEST['name_search'])){
-								$result = searchByName($table,$_REQUEST['name_search']);
-								echo "homi";
-							}
-							else
-								$result = getList($table);// goi phuong thuc lay danh sach
-							while($set = $result->fetch()){ // duyet danh sach
-								echo "<tr  class=''>";
-								echo "<td> <input type='checkbox' class='chb-cata' name='check[]' value=".$set['id'].">".$set['id']."</td>";
-								echo "<td>".$set['name']."</td>";
-								echo "<td>".$set['price']."</td>";
-								echo "<td>".$set['sale']."</td>";
-								echo "<td>".$set['date_created']."</td>";
-								echo "<td>".$set['stock']."</td>";
-								echo "<td><img style='max-width: 30px' class='img-fluid' src=".$set['image']."></td>";
-								echo "<td> <a class='btn h3 bg-info text-white ml-3 ' href='$url_product&action=delete&id=".$set['id']."'>Xóa</a>";
-								echo "<a class='btn h3 text-white bg-info ml-3 ' href='$url_product&action=form-update&id=".$set['id']."'>Sửa</a></td>";
-								echo "</tr>";
-							}
-							?>
-						</tbody>
-					</table>
 				</form>
+					
+				<div id="listproduct">
+				<!-- INCLUDE PRODUCT -->
+				</div>
 			</div>
+			
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center" id='pagination_product'>
+					<li class="page-item disabled"><button class="page-link">Previous</button></li>
+					<li class='page-item active'><button class='page-link' href='#'>1</button></li>
+					<?php
+						
+						for ($i=2; $i <= $count[0]/10 + 1; $i++) { 
+							echo "<li class='page-item'><button class='page-link'>$i</button></li>";
+						}
+					?>
+					<li class="page-item">
+					<button class="page-link">Next</button>
+					</li>
+				</ul>
+			</nav>
 		</div>
 	</div>
 	<script>

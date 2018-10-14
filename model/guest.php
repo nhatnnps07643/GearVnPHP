@@ -64,15 +64,21 @@ class Guest {
 		$db->execute($query);
 	}
 
-	static function updateinfo($id){
+	// static function updateinfo($id){
+	// 	$db = new connect();
+	// 	$query = "update guest set name =";
+	// 	$db->execute($query);
+	// }
+
+	static function updatepassword($id,$pass){
 		$db = new connect();
-		$query = "update guest set name =";
+		$query = "update guest set password = '$pass' where id = $id";
 		$db->execute($query);
 	}
 
 	function reset($id){
         $db = new connect();
-        $query = "update guest set password='123456789' where id = $id";
+        $query = "update guest set password='".md5(123456789)."' where id = $id";
         $db->execute($query);
     }
 	// Xóa danh mục

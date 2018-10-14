@@ -58,7 +58,7 @@ $route = "index.php?path=product";
 						<div class='boximg bg-white'><img src='$image' alt=''>
 							<div class='combo-icon'>
 								<a class='element-icon bg-info' href='$route&action=add&id=$id'><i class='fas fa-cart-plus text-white'></i></a>
-								<a class='element-icon icon-view bg-info text-white' href='#'><i class='far text-white fa-credit-card'></i>$purchases</a>
+								<a class='element-icon icon-view bg-info text-white' href='#'>$purchases lượt mua</a>
 							</div>
 						</div>
 						<figcaption>
@@ -90,7 +90,7 @@ $route = "index.php?path=product";
 						<div class='boximg bg-white'><img src='$image' alt=''>
 							<div class='combo-icon'>
 								<a class='element-icon bg-info' href='$route&action=add&id=$id'><i class='fas fa-cart-plus text-white'></i></a>
-								<a class='element-icon icon-view bg-info text-white' href='#'><i class='far text-white fa-credit-card'></i>$purchases</a>
+								<a class='element-icon icon-view bg-info text-white' href='#'>$purchases lượt mua</a>
 							</div>
 						</div>
 						<figcaption>
@@ -126,7 +126,7 @@ $route = "index.php?path=product";
 						<div class='boximg bg-white'><img src='$image' alt=''>
 							<div class='combo-icon'>
 								<a class='element-icon bg-info' href='$route&action=add&id=$id'><i class='fas fa-cart-plus text-white'></i></a>
-								<a class='element-icon icon-view bg-info text-white' href='#'><i class='far text-white fa-credit-card'></i>$purchases</a>
+								<a class='element-icon icon-view bg-info text-white' href='#'>$purchases lượt mua</a>
 							</div>
 						</div>
 						<figcaption>

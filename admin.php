@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-	<script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
-    <link rel="stylesheet" href="./view/Public/css/main.css">
-	<link rel="stylesheet" href="./admin/public/css/add.css">
 
-</head>
-<body>
 	<!-- ----------CONTROLLER------------ -->
 	<?php 
 		session_start();
@@ -68,11 +56,4 @@
 
 	<!-- ---------ADD SCRIPT------- -->
 
-	<script src="./view/Public/js/core.js"></script>
-	<!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	
-	<script src="./admin/public/js/add.js"></script>
-	<script src="./view/Public/js/sample.js"></script>
-</body>
-</html>
