@@ -29,16 +29,51 @@ class Bill{
 		return $id[0];
 	}
 	
-	static public function GetById_guest($id_guests){
+	static function GetById_guest($id_guests){
 		$db = new connect();
-		$query = "select * from bill where id_guest = $id_guests";
+		$query = "select * from bill where id_guest = $id_guests ORDER BY ID DESC";
 		$result = $db->getList($query);
 		return $result;
 	}
 
+	static function GetLimit($from, $to){
+		$db = new connect();
+		$query = "select * from bill, guest WHERE bill.id_guest = guest.id ORDER BY bill.ID DESC limit $from, $to ";
+		$result = $db->getList($query);
+		return $result;
+	}
+
+	static  function Bill_Guest(){
+		$db = new connect();
+		$query = "select * from bill, guest WHERE bill.id_guest = guest.id";
+		$result = $db->getList($query);
+		return $result;
+	}
+
+	static  function Bill_NotActive(){
+		$db = new connect();
+		$query = "select * from bill , guest WHERE bill.id_guest = guest.id and status = 0";
+		$result = $db->getList($query);
+		return $result;
+	}
+
+	static function count(){
+		$db = new connect();
+		$query = "select count(id) from bill";
+		$result = $db->getInstance($query);
+		return $result[0];
+	}
+	
+	
+
     static function updateStatus($id){
 		$db = new connect();
-		$query = "update bill set status = 1 where id = $id ";
+		$status = getById('bill',$id)['status'];
+		if($status == 0){
+			$query = "update bill set status = 1 where id = $id ";
+		}else{
+			$query = "update bill set status = 0 where id = $id ";
+		}
 		$result = $db->execute($query);
 		return $result;
     }

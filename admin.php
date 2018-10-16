@@ -1,5 +1,4 @@
 
-	<!-- ----------CONTROLLER------------ -->
 	<?php 
 		session_start();
 		// Điều khiển xử lí
@@ -23,6 +22,7 @@
 		require 'model/guest.php';
 		require 'model/image.php';
 		require 'model/core.php';
+		require 'model/bill.php';
 		//Gọi đến các controller để xử lí
 		ini_set('upload_max_filesize', '10M');
 		$MESSAGE='';
@@ -47,13 +47,15 @@
 				require 'controller/admin/image.Controller.php';
 				break;
 			
+			case 'bill':
+				require 'controller/admin/bill.Controller.php';
+				break;
+			
 			default:
 				require 'view/404.php';
 				break;
 		}
 	?>
 		
-
-	<!-- ---------ADD SCRIPT------- -->
 
 	

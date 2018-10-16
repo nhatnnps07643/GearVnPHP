@@ -17,7 +17,7 @@
     //Lấy danh sách danh mục
     function getList($table){
         $db = new connect();
-        $query = "select * from $table ORDER BY ID DESC";
+        $query = "select * from $table ORDER BY id DESC";
         $result = $db->getList($query);
         return $result;
     }

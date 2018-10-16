@@ -13,7 +13,7 @@ $route = "index.php?path=product";
               </div>
             </div>
             <div class="col-md-3">
-              <div class="nav-category shadow mt-3 mt-md-0">
+              <div class="nav-category shadow mt-3 mt-md-0" style='overflow:hidden'>
                 <div class="title">
                   <h3 class="text-center">DANH MỤC</h3>
                 </div>
@@ -23,10 +23,10 @@ $route = "index.php?path=product";
 					foreach ($resutl as  $value) {
 						extract($value);
 						echo 
-						"<a href='$route&id=$id'>
-						<div class='element ml-4 d-flex'>
-						<img class='img-fluid' src='$img' alt=>
-						<h3> $name </h3>
+						"<a href='$route&id=$id' style='border-bottom: 1px solid black;text-decoration: none'>
+						<div class='element pl-4 d-flex' style='margin: .25rem 0 ; background: #fab3239c'>
+						<img class='img-fluid' src='$img' alt='' style='width: 35px; height: 35px; object-fit:cover'>
+						<h3 style=' margin: 0;line-height: 42px; color:black; text-decoration: none'> $name </h3>
 						</div></a>"
 						;
 					}

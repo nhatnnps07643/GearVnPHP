@@ -106,7 +106,8 @@ switch ($action){
 			$response['success'] = true;
 		}else{
 			$response['status'] = 'Mật khẩu không đúng';
-		}
+        }
+        // trả về 1 json
 		header('Content-type: application/json');
 		echo json_encode( $response );
 		break;
