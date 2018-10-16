@@ -59,18 +59,17 @@
 			<?php 
 				foreach ($result as $value) {
 					extract($value);
-					echo "<div class='item col-md-3 mt-5 border'><a href='$route&action=detail&id=$id'>
+					echo "<div class='item col-md-3 mt-5 border'><a href='?path=product&action=detail&id=$id'>
 					<figure class='shadow-sm'>
 						<div class='boximg bg-white'><img src='$image' alt=''>
 							<div class='combo-icon'>
 								<a class='element-icon bg-info' href='$route&action=add&id=$id'><i class='fas fa-cart-plus text-white'></i></a>
-								<a class='element-icon bg-info' href='#'><i class='far fa-eye text-white'></i></a>
-								<a class='element-icon icon-view bg-info text-white' href=''><i class='far text-white fa-credit-card'></i>$purchases</a>
+								<a class='element-icon icon-view bg-info text-white' href='#'>$purchases lượt mua</a>
 							</div>
 						</div>
 						<figcaption>
 							<h3>$name</h3>
-							<div class='price mt-3'>$price đ</div>
+							<div class='price mt-3'>".number_format($price)." VNĐ</div>
 						</figcaption>
 					</figure></a></div>";
 				}

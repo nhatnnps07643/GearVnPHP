@@ -38,7 +38,7 @@ $url_product = "admin.php?path=guest";
 						<?php
 							if(isset($_POST['name_search']))
 							// Nếu có tồn tại cái search
-								$result = searchByName($table,$_POST['name_search']);
+								$result = Guest::searchEmail($_POST['name_search']);
 							else
 								$result = getList($table);// goi phuong thuc lay danh sach
 							while($set = $result->fetch()){ // duyet danh sach

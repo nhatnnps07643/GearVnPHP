@@ -81,5 +81,10 @@ class Guest {
         $query = "update guest set password='".md5(123456789)."' where id = $id";
         $db->execute($query);
     }
+	static function searchEmail($email){
+        $db = new connect();
+        $query = "select * from guest where email = '$email'";
+        $db->execute($query);
+    }
 	// Xóa danh mục
 }

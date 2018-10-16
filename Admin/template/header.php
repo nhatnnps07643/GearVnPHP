@@ -12,7 +12,7 @@
 <body>
 <header class="canhcam-header-2 d-block">
 	<nav class="navbar navbar-expand-lg container">
-		<a class="navbar-brand" href="?home"><img src="./view/Public/img/logo.png" alt="Logo"></a>
+		<a class="navbar-brand" href=""><img src="./view/Public/img/logo.png" alt="Logo"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#CCMenuHeader" aria-controls="CCMenuHeader" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
 		<div class="collapse navbar-collapse" id="CCMenuHeader">
 			<div class="user dropdown" style=" display: <?php if(isset($_SESSION['admin'])) echo "flex"; else echo "none" ?> ">

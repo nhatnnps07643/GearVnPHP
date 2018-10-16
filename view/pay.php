@@ -8,7 +8,10 @@
 				<div class="col-md-7">
 					<form action='<?=$route?>&action=pay' method='POST'>
 					<?php
+					if(isset($_SESSION['user'])){
 						$guest = getById('guest', $_SESSION['user']['id']);
+					}
+						
 					?>
 						<div class="form-group">
 							<label for="">Họ và tên</label>

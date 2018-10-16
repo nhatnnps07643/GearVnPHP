@@ -11,7 +11,7 @@
                     <div class="row d-flex">
                         <div class="col-md-5 order-md-2 mb-4 infomation">
                             <h1><?=$result['name']?></h1>
-                            <div class="all-price"><span class="price"><?=$result['price']?></span></div>
+                            <div class="all-price"><span class="price"><?=number_format($result['price'])?> VND</span></div>
                             <hr>
                             <div class="html">Nike Golf Shirt with zip-up collar up to the chin in Dri-FIT sweat-wicking fabric Stretch inserts Contrasting details Body: Dri-FIT 100% polyester Upper body: 90% polyester, 10% elastane Machine washable</div>
                             <hr>
