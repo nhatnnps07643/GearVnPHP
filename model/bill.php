@@ -57,6 +57,14 @@ class Bill{
 		return $result;
 	}
 
+	static  function getDetailBIll($id){
+		$db = new connect();
+		$query = "select * from bill_detail, product where bill_detail.id_product = product.id";
+		echo $query;	
+        $db->getList($query);
+	}
+
+
 	static function count(){
 		$db = new connect();
 		$query = "select count(id) from bill";

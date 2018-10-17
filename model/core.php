@@ -51,5 +51,11 @@
         $query = "delete from $table where id IN (".$str.")";
         $db->execute($query);
     }
+
+    function getBillDetail($id){
+        $db = new connect();
+        $query = "select * from bill_detail, product where bill_detail.id_product = product.id and bill_detail.id_bill = $id";
+        $db->getList($query);
+    }
    
 ?>

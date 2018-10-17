@@ -1,6 +1,5 @@
 <?php 
 include "admin/template/header.php";
-//Đường dẫn tới controller điều khiển
 $url_product = "admin.php?path=guest";
 ?>
 	<div class="container mt-5">

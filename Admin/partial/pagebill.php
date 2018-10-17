@@ -14,7 +14,7 @@
         echo "<td> <div class='btn btn-status $btnclass'>$str</div></td>";
         echo "<td>$date_created</td>";
         echo "<td><button class='btn h3 bg-info text-white ml-3 btnupdate'>Cập nhật</button>";
-        echo "<td><button class='btn h3 bg-primary text-white ml-3 btn-view-info'>Xem chi tiết</button>";
+        echo "<td><a href='?path=bill&action=detailbill&id=$value[0]' class='btn h3 bg-primary text-white ml-3 btn-view-info'>Xem chi tiết</a>";
         echo "</tr>";
    }
 ?>

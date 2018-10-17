@@ -40,9 +40,17 @@ switch ($action) {
     
 
     case "getBillNotActive":
-
         $result = Bill::Bill_NotActive();
         include 'Admin/partial/pageBill.php';
+        break;
+
+    case "detailbill":
+        $result = Bill::getDetailBIll($_GET['id']);
+        foreach ($result as $key => $value) {
+            print_r($key);
+        }
+        
+        // include 'Admin/detailbill.php';
         break;
 
 
