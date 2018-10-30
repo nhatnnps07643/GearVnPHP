@@ -22,6 +22,7 @@
 				$price = $_POST['price'];
 				$image = './view/Public/img/product/' .$_FILES['image']['name'];
 				$sale = $_POST['sale'];
+				$tagseo = $_POST['tagseo'];
 				$decs = $_POST['decs'];
 				$special =  isset($_POST['special-cb']) ? 1 : 0;
 				$stock = $_POST['stock'];
@@ -30,7 +31,8 @@
 				$id_brand = $_POST['brand'];
 				//Kiểm tra sản phẩm có tồn tại hay chưa
 				if(getByName($table,$name) == null){
-					$product = new Product(NULL, $name, $image, $price, $sale, $decs,$special,$stock,$guarantee,$id_category, $id_brand);
+					$product = new Product(NULL, $name,$tagseo, $image, $price, $sale, $decs,$special,$stock,$guarantee,$id_category, $id_brand);
+					echo $image;
 					$product->insert();
 					move_uploaded_file($_FILES['image']['tmp_name'] , $image );
 				}else {
@@ -57,6 +59,7 @@
 			if(isset($_POST['hiddenID'])){
 				$id = $_POST['hiddenID'];
 				$name = $_POST['name'];
+				$tagseo = $_POST['tagseo'];
 				$price = $_POST['price'];
 				$sale = $_POST['sale'];
 				$decs = $_POST['decs'];
@@ -71,11 +74,10 @@
 					$image = $_FILES['image'];
 					$url = './view/Public/img/product/'.$_FILES['image']['name'];
 					move_uploaded_file($_FILES['image']['tmp_name'] , $url );
-					print_r($_FILES['image']['tmp_name']);
 				}else{
 					$url = $_POST['hiddenIMG'];
 				}
-				$product = new Product($id, $name, $url, $price, $sale, $decs,$special,$stock,$guarantee,$id_category, $id_brand);
+				$product = new Product($id, $name,$tagseo,$url, $price, $sale, $decs,$special,$stock,$guarantee,$id_category, $id_brand);
 				$product->update();
 			}
 		break;

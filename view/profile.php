@@ -123,13 +123,14 @@
                       foreach ($Arrbill as $key => $value) {
                         extract($value);
                         $stt = $status == 1 ? 'Đã giao' : 'Chưa giao';
+                        $class = $status == 1 ? 'success' : 'warning';
                         $checked = $status == 1 ? 'disabled' : '';
                         echo "<tr>
                                 <th scope='row'>$id</th>
                                 <td>".number_format($total)." VND</td>
                                 <td>$date_created</td>
-                                <td>$stt</td>
-                                <td> <a href=''class=' btn btn-warning $checked' >Xóa</a> </td>
+                                <td><div class='btn btn-$class'>$stt</div></td>
+                                <td> <a href='admin.php?path=bill&action=delete&id=$id'class=' btn btn-warning $checked' >Xóa</a> </td>
                               </tr>";
                       }
                     ?>

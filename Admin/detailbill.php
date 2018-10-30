@@ -19,32 +19,29 @@
                         <th style='font-weight: 500' scope="col">Số lượng</th>
                         <th style='font-weight: 500' scope="col">Giá tiền</th>
                         <th style='font-weight: 500' scope="col">Tổng số tiền</th>
-                        <th style='font-weight: 500' scope="col">Trạng thái</th>
-                        <th style='font-weight: 500' scope="col">Ngày mua</th>
-                        <th style='font-weight: 500' scope="col">Thao tác</th>
-                        <th style='font-weight: 500' scope="col">Xem chi tiết</th>
+                        <th style='font-weight: 500' scope="col">Hinh Anh</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php 
-                    print_r($result);
-                        // foreach ($result as $value) {
-                        //    print_r($value);
-                        // }
+					<?php 
+                        foreach ($result as $value) {
+							extract($value);
+                           	echo "<tr  class=''>
+									<th style='font-weight: 400' scope='col'>$name</th>
+									<th style='font-weight: 400' scope='col'>$count</th>
+									<th style='font-weight: 400' scope='col'>".number_format($price)."</th>
+									<th style='font-weight: 400' scope='col'>".number_format($price * $count)."</th>
+									<th style='font-weight: 400' scope='col'><img style='width: 50px; ' src='$image'></th>
+								</tr>";
+                        }
                     ?>
-                        <tr  class="">
-                            <th style='font-weight: 400' scope="col">Tên Khách Hàng</th>
-                            <th style='font-weight: 400' scope="col">Địa chỉ</th>
-                            <th style='font-weight: 400' scope="col">Số điện thoại</th>
-                            <th style='font-weight: 400' scope="col">Tổng số tiền</th>
-                            <th style='font-weight: 400' scope="col">Trạng thái</th>
-                            <th style='font-weight: 400' scope="col">Ngày mua</th>
-                            <th style='font-weight: 400' scope="col">Thao tác</th>
-                            <th style='font-weight: 400' scope="col">Xem chi tiết</th>
-                        </tr>
+                        
                     </tbody>
                 </table>
-            
+				<div class="d-flex w-100">
+						<div class="mr-auto"></div>
+						<div><a href='?path=bill' class='btn btn-success text-dark'>Quay lại</a></div>
+				</div>
             </div>
         </div>
     </div>

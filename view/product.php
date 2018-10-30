@@ -23,11 +23,11 @@
 				foreach ($resutl as  $value) {
 					extract($value);
 					echo 
-					"<a href='$route&id=$id'>
-					<div class='element ml-4 d-flex'>
-					<img class='img-fluid' src='$img' alt=>
-					<h3> $name </h3>
-					</div></a>"
+					"<a href='$name-$id.html' style='border-bottom: 1px solid black;text-decoration: none'>
+						<div class='element pl-4 d-flex' style='margin: .25rem 0 ; background: #fab3239c'>
+						<img class='img-fluid' src='$img' alt='' style='width: 35px; height: 35px; object-fit:cover'>
+						<h3 style=' margin: 0;line-height: 42px; color:black; text-decoration: none'> $name </h3>
+						</div></a>"
 					;
 				}
 			?>
@@ -49,7 +49,7 @@
               </div>
 			  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="mr-auto"></div>
-				<form action="<?=$route?>" method='POST' class="form-inline my-2 my-lg-0">
+				<form action="" method='POST' class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" name='txtSearch' type="search" placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" name='action' value='search' type="submit">Search</button>
 				</form>
@@ -59,7 +59,8 @@
 			<?php 
 				foreach ($result as $value) {
 					extract($value);
-					echo "<div class='item col-md-3 mt-5 border'><a href='?path=product&action=detail&id=$id'>
+					$names = makupStr($name);
+					echo "<div class='item col-md-3 mt-5 border'><a href='detail/$id/$names.html'>
 					<figure class='shadow-sm'>
 						<div class='boximg bg-white'><img src='$image' alt=''>
 							<div class='combo-icon'>

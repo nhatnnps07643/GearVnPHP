@@ -10,15 +10,13 @@ $url_product = "admin.php?path=guest";
 				<!-- <h4 class="alert alert-success">Admin nên chọn tối 8 - 10 sản phẩm được hiển thị trên menu danh mục</h4>
 				<h4 class="alert alert-info">Hiện giờ có <?php $count = Category::countCateSelect(); echo $count[0] ?> danh mục được hiển thị</h4> -->
 				<form action="" method="POST">
+					
 					<div class="menu-big mb-3 d-flex">
-						<!-- <div class="btn bg-warning select-all" >Chọn tất cả</div>
-						<div class="btn bg-info no-select-all ml-3 " >Bỏ chọn</div>
-						<button class="btn btn-primary ml-3" type="submit" name="action" value="delete-multi-pro">Xóa các mục đã chọn</button> -->
-						<!-- <button class="btn btn-primary ml-3 mr-auto" type="submit" name="action" value="resetpassword">Reset Password</button> -->
 						<div class="form-inline my-2 my-lg-0">
 							<input class="form-control mr-sm-2" name= "name_search" type="search" placeholder="Search" aria-label="Search">
 							<button class="btn btn-outline-success my-2 my-sm-0" value="search" type="submit">Search</button>
-   					 	</div>
+						</div>
+						<div class="alert alert-info pl-5 pr-5 pt-1 pb-1 m-0 ml-3">Mật khẩu được thay đổi thành 123456789</div>
 					</div>
 					</div>
 					<table class="table table-bordered">

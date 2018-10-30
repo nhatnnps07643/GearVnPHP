@@ -56,7 +56,7 @@
 	
 					<div class="col-md-12 d-flex mt-3">
 						<div class="mr-auto"></div>
-							<a href="<?=$route?>&action=contactpay" class="btn bg-info text-white">Thanh toán</a>
+							<a href="product/contactpay.html" class="btn bg-info text-white">Thanh toán</a>
 					</div>
 
 				</div>

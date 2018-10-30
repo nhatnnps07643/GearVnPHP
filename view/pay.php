@@ -6,7 +6,7 @@
 		<div class="container mt-5">
 			<div class="row">
 				<div class="col-md-7">
-					<form action='<?=$route?>&action=pay' method='POST'>
+					<form action='product/pay.html' method='POST'>
 					<?php
 					if(isset($_SESSION['user'])){
 						$guest = getById('guest', $_SESSION['user']['id']);

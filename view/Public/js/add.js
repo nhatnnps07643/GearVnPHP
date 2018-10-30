@@ -38,6 +38,9 @@ $("#updatepass").on('click', function() {
         $.post('index.php', { path: 'user', action: 'update_user', id: idUser, password_old: passOld, password_new: passNew }, function(data) {
             if (data.success == true) {
                 alert('Cập nhật mật khẩu thành công');
+                $('#password_old').val('');
+                $('#password_new').val('');
+                $('#password_new_2').val('');
             }
         });
     } else {
@@ -45,3 +48,11 @@ $("#updatepass").on('click', function() {
     }
 
 });
+
+
+
+$(window).ready(function() {
+    $("#cke_1_contents").css({
+        height: '500px',
+    })
+})

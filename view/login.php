@@ -8,6 +8,7 @@
 						<div class="title">
 							<h2 class="text-center">Đăng nhập</h2>
 						</div>
+						<?php if($MESSAGE != '') echo "<div class='alert alert-info'> $MESSAGE </div>" ?> 
 						<form class="text-center" action="index.php?path=user&action=login_handle" method="POST">
 							<div class="row mt-5">
 								<div class="col-md-6">
@@ -34,7 +35,7 @@
 										<h3>Đăng nhập với</h3>
 									</div><a class="btn-login-width bg-primary" href="#"><i class="fab fa-facebook"></i>Facebook</a><a class="btn-login-width bg-danger" href="#"><i class="fab fa-google-plus-g"></i>Google</a>
 								</div>
-								<div class='alert alert-info'> <?php if($MESSAGE != '') echo $MESSAGE ?> </div>
+								
 							</div>
 						</form>
 					</div>

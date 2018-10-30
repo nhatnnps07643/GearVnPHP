@@ -21,7 +21,7 @@ switch ($action){
 
     case "logout":
         unset($_SESSION['user']);
-        header('location: /GearVnPHP/index.php');
+        header('location: index.php');
         break;
 
     case "profile":
@@ -47,13 +47,12 @@ switch ($action){
                     'address' => $guestOld['address'],
                     'number' => $guestOld['number'], 
                 ];
-                header('location: /GearVnPHP/index.php');
+                header('location: index.php');
             }
         }
         $MESSAGE = 'Tài khoản hoặc mật khẩu không chính sát';
         include './view/login.php';
         break;  
-
     case "registion_handle":
         if(isset($_POST['name'])){
             $name = $_POST['name'];
@@ -78,7 +77,7 @@ switch ($action){
                         'address' => $address,
                         'number' => $number, 
                     ];
-					header('location: /GearVnPHP/index.php');
+					header('location: index.php');
                 }
                 else{
                     $MESSAGE = 'Mật khẩu không trùng';

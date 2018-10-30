@@ -23,7 +23,7 @@ $route = "index.php?path=product";
 					foreach ($resutl as  $value) {
 						extract($value);
 						echo 
-						"<a href='$route&id=$id' style='border-bottom: 1px solid black;text-decoration: none'>
+						"<a href='$name-$id.html' style='border-bottom: 1px solid black;text-decoration: none'>
 						<div class='element pl-4 d-flex' style='margin: .25rem 0 ; background: #fab3239c'>
 						<img class='img-fluid' src='$img' alt='' style='width: 35px; height: 35px; object-fit:cover'>
 						<h3 style=' margin: 0;line-height: 42px; color:black; text-decoration: none'> $name </h3>
@@ -53,7 +53,8 @@ $route = "index.php?path=product";
 				$result = Product::getProductSpecial(8);
 				foreach ($result as $value) {
 					extract($value);
-					echo "<div class='item col-md-3 mt-5 border'><a href='$route&action=detail&id=$id'>
+					$name_markup = makupStr($name);
+					echo "<div class='item col-md-3 mt-5 border'><a href='detail/$id/$name_markup.html'>
 					<figure class='shadow-sm'>
 						<div class='boximg bg-white'><img src='$image' alt=''>
 							<div class='combo-icon'>

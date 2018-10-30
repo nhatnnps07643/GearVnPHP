@@ -46,7 +46,7 @@ $url_product = "admin.php?path=guest";
 						<li class='page-item active'><button class='page-link' href='#'>1</button></li>
 							<?php
 								$count = Bill::count();
-								for ($i=2; $i <= $count/10; $i++) { 
+								for ($i=2; $i <= $count/10 + 1; $i++) { 
 									echo "<li class='page-item'><button class='page-link'>$i</button></li>";
 								}
 							?>

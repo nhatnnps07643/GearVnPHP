@@ -54,8 +54,18 @@
 
     function getBillDetail($id){
         $db = new connect();
-        $query = "select * from bill_detail, product where bill_detail.id_product = product.id and bill_detail.id_bill = $id";
-        $db->getList($query);
+		$query = "select * from bill_detail, product where bill_detail.id_product = product.id and bill_detail.id_bill = $id ORDER BY bill_detail.ID DESC";
+		$result = $db->getList($query);
+		return $result;
+    }
+    function makupStr($str){
+      $str = str_replace(' ', '', $str);
+      $str = str_replace('(', '', $str);
+      $str = str_replace(')', '', $str);
+      $str = str_replace('.', '', $str);
+      $str = str_replace('-', '', $str);
+      $str = str_replace('®', '', $str);
+		return $str;
     }
    
 ?>

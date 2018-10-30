@@ -23,8 +23,8 @@ switch ($action){
 		if(isset($_POST['txtSearch']))
 			$text = $_POST['txtSearch'];
 		else
-			$text = NULL;
-		$result = searchByName($table, $text);
+			$text = null;
+		$result = Product::searchProduct($text);
 		include './view/product.php';
 		break;
 
@@ -45,10 +45,9 @@ switch ($action){
 			if($temp == 1){
 				array_push($_SESSION['cart'], $_GET['id']);
 				array_push($_SESSION['count'], 1 );
-				echo $_GET['id'];
 			}
 		}
-		header('Location: /GearVnPHP/index.php?path=product&action=cart');
+		header('Location: product/cart.html');
 		break;
 		
 	case "change":
@@ -105,8 +104,13 @@ switch ($action){
 		break;
 
 	case "pay":
+		if(isset($_SESSION['user'])){
+			$id = $_SESSION['user']['id'] ;
+		}else{
+			$id = NULL;
+		}
 		$bill = new Bill($_SESSION['total'], $_POST['address'] , $_POST['number'],
-							$_POST['payments'], $_POST['noted'], $_SESSION['user']['id'] );
+							$_POST['payments'], $_POST['noted'],$id );
 		$id = $bill->insert();
 		foreach ($_SESSION['cart'] as $key => $value) {
 			$bill_detail = new BillDetail($value, $_SESSION['count'][$key], $id );
